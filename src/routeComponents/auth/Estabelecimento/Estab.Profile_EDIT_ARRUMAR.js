@@ -126,6 +126,10 @@ console.log(agendas)
   
         <div className="py-4">
           <h3>Agendas</h3>
+
+          <Link className="btn btn-lg btn-primary" to={`/agenda/${state._id}/criar`}> 
+              Nova Agenda
+          </Link>
   
           {/* agendas => é o state das agendas => linha 24 */}
           {reservas.length ? (
@@ -163,9 +167,6 @@ console.log(agendas)
             }) 
           ) : (null)}
         
-          <Link className="btn btn-lg btn-primary" to={`/agenda/${state._id}/criar`}> 
-              Nova Agenda
-          </Link>
         </div>
       </div> 
 

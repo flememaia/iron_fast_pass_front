@@ -32,6 +32,10 @@ console.log(agendas)
         </div>
         <h1>AGENDA Específica</h1>
         <p>
+          <strong> Estabelecimento: </strong>
+            {agendas.nameEstab}
+        </p>
+        <p>
           <strong> Data: </strong>
             {agendas.data}
         </p>
@@ -63,14 +67,18 @@ console.log(agendas)
         <strong>Taxa de Entrada: </strong>
          {agendas.taxa}
         </p> 
-        <Link className="btn btn-primary" to={`/agenda/${agendas._id}/editar`}>
+        {/* <Link className="btn btn-primary" to={`/agenda/${agendas._id}/editar`}>
           Editar
-        </Link> 
+        </Link>  */}
+        <div className="form-group d-flex m-4 justify-content-between">
+          <Link className="fas fa-edit fa-2x" to={`/agenda/${agendas._id}/editar`} />
+          <Link className="fas fa-trash-alt fa-2x" to={`/agenda/${agendas._id}/cancelar`} />
+        </div>
         <br></br>   
-        <br></br>                  
-        <Link className="btn btn-primary" to={`/agenda/${agendas._id}/cancelar`}>
+        <br></br>            
+        {/* <Link className="btn btn-primary" to={`/agenda/${agendas._id}/cancelar`}>
           Cancelar
-        </Link>            
+        </Link>             */}
       </div>
   );
 }

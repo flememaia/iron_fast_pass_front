@@ -16,7 +16,8 @@ import ReservaCancelar from "../routeComponents/Reserva/ReservaCancelar_Edit";
 import EstabProfile from "../routeComponents/auth/Estabelecimento/Estab.Profile_ARRUMAR";
 import AgendaDetails from "../routeComponents/Agenda/AgendaDetails";
 import AgendaCancelar from "../routeComponents/Agenda/AgendaCancelar_Edit";
-// import AgendaEditar from "../routeComponents/Agenda/AgendaEditar";
+import AgendaCriar from "../routeComponents/Agenda/AgendaCriar";
+import AgendaEditar from "../routeComponents/Agenda/AgendaEditar";
 
 function App() {
   return (
@@ -36,7 +37,9 @@ function App() {
           <ProtectedRoute exact path="/profile_estab" component={EstabProfile} />
           <ProtectedRoute exact path="/agenda/:id" component={AgendaDetails} />
           <ProtectedRoute exact path="/agenda/:id/cancelar" component={AgendaCancelar} />
-          {/* <ProtectedRoute exact path="/agenda/:id/editar" component={AgendaEditar} /> */}
+          <ProtectedRoute exact path="/agenda/:id/criar" component={AgendaCriar} />
+          <ProtectedRoute exact path="/agenda/:id/editar" component={AgendaEditar} />
+          {/* to={`/agenda/${agendas._id}/editar`} */}
         </Switch>
       </AuthContextComponent>
     </BrowserRouter>
