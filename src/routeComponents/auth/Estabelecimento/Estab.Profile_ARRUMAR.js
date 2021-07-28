@@ -54,11 +54,12 @@ console.log(state)
 console.log(agendas)
 
     return (
-      <div className="container mt-5">
-        <Link className="btn btn-primary" to="/profile_estab/edit">
+      <div className="container mt-5"> 
+        
+        {/* <Link className="btn btn-primary" to="/profile_estab/edit">
           Editar Perfil ESTABELECIMENTO
         </Link>
-  
+   */}
         <h1>Perfil ESTABELECIMENTO</h1>
         <hr />
   
@@ -72,49 +73,41 @@ console.log(agendas)
           <strong>Nome: </strong>
           {state.name}
         </p>
-  
+
+        <div className="form-group d-flex">
+          <Link className="fas fa-edit fa-2x" to="/profile_estab" />
+        </div>
+
+        <hr />
+        
         <div className="py-4">
-          <h3>Agendas</h3>
-  
+          <h3>AGENDAS</h3>
+
+          {/* aqui o state._id é o id do estabelecimento */}
+          {/* <Link className="btn btn-lg btn-primary" to={`/agenda/${state._id}/criar`}> 
+              Incluir Agenda
+          </Link> */}
+
+          <div className="form-group d-flex">
+            <Link className="fas fa-calendar-plus fa-2x" to={`/agenda/${state._id}/criar`} />
+          </div>
+
           {/* agendas => é o state das agendas => linha 24 */}
+          {/* DÚVIDA RENDERIZAR SEPARADO SOMENTE AS ATIVAS E AS NÃO ATIVAS COMO HISTÓRICO */}
           {agendas.length ? (
             agendas.map((agenda) => {
-              return (
-                <div
-                  key={agenda._id}
-                  className="rounded shadow w-50 my-4 p-3 text-center "
-                >
-                 <Link
-                    className="text-decoration-none"
-                    to={`/agenda/${agenda._id}`}
-                  >
-                    Ver detalhes
-                  </Link>
-                    <p>
-                      <strong> Data: </strong>
-                      {agenda.data}
-                    </p>
-  
-                    <p>
-                      <strong>Evento: </strong>
-                      {agenda.evento}
-                    </p>
-                    <p>
-                      <strong>Status: </strong>
-                      {agenda.status}
-                    </p>
-                    <p>
-                      <strong>Horario: </strong>
-                        {agenda.horario}
-                    </p>
-                </div>
-              ); 
+                return ( 
+                <div key={agenda._id} className="rounded shadow w-100 my-4 p-3 ">
+                  {/* <Link className="text-decoration-none" to={`/agenda/${agenda._id}`}> Ver detalhes </Link> */}
+                  <Link className="fas fa-eye" to={`/agenda/${agenda._id}`} />
+                 <p> <strong> Data: </strong> {agenda.data}</p>
+                 <p> <strong>Evento: </strong> {agenda.evento} </p>
+                 <p> <strong> Status: </strong> {agenda.status} </p>
+                 <p> <strong>Horario: </strong> {agenda.horario}</p>
+                </div>); 
             }) 
           ) : (null)}
         
-          <Link className="btn btn-lg btn-primary" to={`/agenda/${state._id}/criar`}> 
-              Nova Agenda
-          </Link>
         </div>
       </div> 
     );
