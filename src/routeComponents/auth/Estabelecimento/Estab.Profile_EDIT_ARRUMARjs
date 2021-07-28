@@ -24,7 +24,7 @@ function EstabProfile() {
       // horarioDeFuncionamento: "",
     });
     
-    //dados da agenda - AgendaModel
+    //dados do estabelecimento - AgendaModel
     const [agendas, setAgendas] = useState([]);
   
     useEffect(() => {
@@ -72,43 +72,94 @@ console.log(agendas)
           <strong>Nome: </strong>
           {state.name}
         </p>
+        {/* <p>
+          <strong>E-mail: </strong>
+          {state.email}
+        </p> */}
+  
+        {/* <h3>Endereço</h3>
+        <hr />
+        
+        <p>
+          <strong>CEP: </strong>
+          {state.address.postalCode}
+        </p>
+        <p>
+          <strong>Rua: </strong>
+          {state.address.street}
+        </p>
+        <p>
+          <strong>Número: </strong>
+          {state.address.number}
+        </p>
+        <p>
+          <strong>Bairro: </strong>
+          {state.address.neighbourhood}
+        </p>
+        <p>
+          <strong>Cidade: </strong>
+          {state.address.city}
+        </p>
+        <p>
+          <strong>Estado: </strong>
+          {state.address.state}
+        </p>
+  
+        <h3>Informações Pessoais</h3>
+        <hr />
+        <p>
+          <strong>Data de Nascimento: </strong>
+          {formatDate(state.birthDate)}
+        </p>
+        <p>
+          <strong>Telefone: </strong>
+          {state.phoneNumber}
+        </p>
+        <p>
+          <strong>CPF: </strong>
+          {state.document}
+        </p>
+        <p>
+          <strong>Instagram: </strong>
+          {state.isntagram}
+        </p> */}
   
         <div className="py-4">
           <h3>Agendas</h3>
   
           {/* agendas => é o state das agendas => linha 24 */}
-          {agendas.length ? (
-            agendas.map((agenda) => {
+          {reservas.length ? (
+            reservas.map((reserva) => {
               return (
                 <div
-                  key={agenda._id}
+                  key={reserva._id}
                   className="rounded shadow w-50 my-4 p-3 text-center "
                 >
                  <Link
                     className="text-decoration-none"
-                    to={`/agenda/${agenda._id}`}
+                    to={`/reserva/${reserva._id}`}
                   >
                     Ver detalhes
                   </Link>
                     <p>
                       <strong> Data: </strong>
-                      {agenda.data}
+                      {account.agency}
                     </p>
   
                     <p>
                       <strong>Evento: </strong>
-                      {agenda.evento}
+                      {reserva.evento}
                     </p>
                     <p>
                       <strong>Status: </strong>
-                      {agenda.status}
+                      {reserva.status}
                     </p>
                     <p>
                       <strong>Horario: </strong>
-                        {agenda.horario}
+                        {reserva.horario}
                     </p>
                 </div>
-              ); 
+              );
             }) 
           ) : (null)}
         
@@ -117,6 +168,7 @@ console.log(agendas)
           </Link>
         </div>
       </div> 
+
     );
   }
   
