@@ -11,6 +11,8 @@ import ClientLogin from "../routeComponents/auth/Cliente/Client.Login";
 import EstabLogin from "../routeComponents/auth/Estabelecimento/Estab.Login";
 import ClientProfile from "../routeComponents/auth/Cliente/Client.ProfileARRUMAR.";
 import ProtectedRoute from "../routeComponents/auth/PrivateRoute";
+import ReservaDetails from "../routeComponents/Reserva/ReservaDetails";
+import ReservaCancelar from "../routeComponents/Reserva/ReservaCancelar_Edit";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/login" component={ClientLogin}/>
           <Route path="/login_estab" component={EstabLogin}/>
           <ProtectedRoute exact path="/profile" component={ClientProfile} />
+          <ProtectedRoute exact path="/reserva/:id" component={ReservaDetails} />
+          <ProtectedRoute exact path="/reserva/:id/cancelar" component={ReservaCancelar} />
         </Switch>
       </AuthContextComponent>
     </BrowserRouter>

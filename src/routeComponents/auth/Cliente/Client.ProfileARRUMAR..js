@@ -27,14 +27,24 @@ function ClientProfile() {
     async function fetchProfile() {
       try {
         const response = await api.get("/profile");
-
+        // console.log(response)
+        // console.log(response.data)
         setState({ ...response.data });
 
-        // const reservasResponse = await api.get("/reserva");
+        const reservasResponse = await api.get("/reserva");
+        console.log(reservasResponse.data)
 
-        // if (accountsResponse.data.length) {
-        //   setReservas([...reservasResponse.data]);
-        // }
+        // const reservaData = { ...reservaResponse.data.agendaId };
+        // delete reservaResponse.data.agendaId;
+
+        // const { data } = reservaData
+
+        if (reservasResponse.data.length) {
+          setReservas([
+            ...reservasResponse.data
+          ]);
+          console.log(reservas)
+        }
       } catch (err) {
         console.error(err);
       }
@@ -61,10 +71,10 @@ function ClientProfile() {
         <strong>Nome: </strong>
         {state.name}
       </p>
-      <p>
+      {/* <p>
         <strong>E-mail: </strong>
         {state.email}
-      </p>
+      </p> */}
 
       {/* <h3>Endereço</h3>
       <hr />
@@ -113,11 +123,11 @@ function ClientProfile() {
         {state.isntagram}
       </p> */}
 
-      {/* <div className="py-4">
+      <div className="py-4">
         <h3>Suas Reservas</h3>
 
-        {/* reservas => é o state das reservas => linha 24*/}
-        {/* {reservas.length ? (
+        {/* reservas => é o state das reservas => linha 24 */}
+        {reservas.length ? (
           reservas.map((reserva) => {
             return (
               <div
@@ -128,25 +138,35 @@ function ClientProfile() {
                   className="text-decoration-none"
                   to={`/reserva/${reserva._id}`}
                 >
+                  Ver detalhes
+                </Link>
                   <p>
-                    <strong>Agência: </strong>
-                    {account.agency}
+                    <strong> Data: </strong>
+                    {/* {account.agency} */}
                   </p>
 
                   <p>
-                    <strong>{account.type} Nº: </strong>
-                    {String(account.accountNumber).padStart(7, "0")}
+                    <strong>Evento: </strong>
+                    {/* {reserva.evento} */}
                   </p>
-                </Link>
+                  <p>
+                    <strong>Status: </strong>
+                    {reserva.status}
+                  </p>
+                  <p>
+                    <strong>Horario: </strong>
+                      {reserva.horario}
+                  </p>
+                
               </div>
             );
           })
         ) : (
-          <Link className="btn btn-lg btn-primary" to="/account/create">
-            Abra sua conta
+          <Link className="btn btn-lg btn-primary" to="/agenda"> 
+            Reserve seu rolê
           </Link>
         )}
-      </div> */}
+      </div>
     </div> 
   );
 }
