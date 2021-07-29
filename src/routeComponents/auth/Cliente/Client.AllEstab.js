@@ -20,7 +20,7 @@ function EstabList() {
         // console.log(response.data)
         setState({ ...response.data });
 
-        const allEstabsResponse = await api.get("/allestab");
+        const allEstabsResponse = await api.get("/allestab_teste");
         console.log(allEstabsResponse.data)
 
           setAllEstab([
@@ -32,19 +32,21 @@ function EstabList() {
     }
     fetchAllEstab();
   }, []);
+console.log(allEstab)
+console.log(allEstab[0])
+console.log(allEstab[1])
 
   return (
         
     <div className="container mt-5">
-
+      <Link className="fas fa-angle-double-left pr-4" to="/profile" />
       <h1>Perfil - Navbar APP</h1>
       <hr />
 
       <div className="d-flex justify-content-around"> 
-            <img className="img-fluid rounded-circle m-3" src="https://avatars.githubusercontent.com/u/81379613?s=60&v=4" alt="Sua foto de perfil"/>
-            {/* <img className="img-fluid rounded-circle" src={state.fotoUrl} alt="Sua foto de perfil"/> */}
-            <h3>{state.name}</h3>
-        </div>
+        <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
+        <h3 className="align-self-center">{state.name}</h3>
+      </div>
         <hr />
 
         <div className="py-4">
@@ -58,15 +60,18 @@ function EstabList() {
           {/* agendas => é o state das agendas => linha 24 */}
           {allEstab.length ? (
             allEstab.map((estab) => {
+              console.log(estab._id)
               return (
                 <div
                   key={estab._id}
                   className="rounded shadow w-100 my-4 p-3"
                 >
+                  
                  <Link className="text-decoration-none"
                     to={`/allestab/${estab._id}`}
+                    // to="/allestab/6102ca9d07a2462ca806357d"
                   >
-                    Ver detalhes
+                    Ver detalhes 
                   </Link>
                     <p>
                       <strong>{estab.name}</strong>

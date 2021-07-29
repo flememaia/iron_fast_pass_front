@@ -2,7 +2,7 @@ import React from "react";
 import BemVindo from "../img/bem-vindo.png";
 import { Link } from "react-router-dom";
 
-function Home() {
+function SignUp() {
   return (
     <div className="text-center d-flex flex-column align-items-center ">
       <div src={BemVindo} alt="logo" />
@@ -36,4 +36,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default SignUp;
