@@ -8,19 +8,8 @@ function ClientSignUp(props) {
     name: "", 
     password: "", 
     email: "",
-    // fotoUrl: "",
-    // telefone: 0,
-    // redeSocialUrl: "",
-    // rua: "",
-    // bairro: "",
-    // cidade: "",
-    // numero: 0,
-    // estado: "",
-    // cep: 0,
-    // localizacaoUrl: "",
-    // rank: 5,
-    // cnpj: 0,
-    // horarioDeFuncionamento: "",
+    fotoUrl: "",
+    rank: 5
   });
   const [errors, setError] = useState(null);
   
@@ -82,112 +71,16 @@ function ClientSignUp(props) {
           onChange={handleChange}
         />
 
-        {/* <TextInput
-          label="Número de Telefone:"
-          type="number"
-          name="telefone"
-          id="signupFormTelefone"
-          value={state.telefone}
-          error={errors.telefone}
+      <TextInput
+          label="FotoUrl"
+          type="text"
+          name="fotoUrl"
+          id="signupFormfotoUrl"
+          value={state.fotoUrl}
+          error={errors}
           onChange={handleChange}
         />
 
-        <TextInput
-          label="Url Rede Social:"
-          type="text"
-          name="redeSocialUrl"
-          id="signupFormRedeSocialUrl"
-          value={state.redeSocialUrl}
-          error={errors.redeSocialUrl}
-          onChange={handleChange}
-        />
-        <fieldset>
-          <legend>Endereço</legend>
-          <TextInput
-          label="Rua:"
-          type="text"
-          name="rua"
-          id="signupFormAdreessStreet"
-          value={state.rua}
-          error={errors.rua}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="N°:"
-          type="number"
-          name="numero"
-          id="signupFormAdreessNumber"
-          value={state.numero}
-          error={errors.numero}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="Bairro:"
-          type="text"
-          name="bairro"
-          id="signupFormAdreessBairro"
-          value={state.bairro}
-          error={errors.bairro}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="Cidade:"
-          type="text"
-          name="cidade"
-          id="signupFormAdreessCidade"
-          value={state.cidade}
-          error={errors.cidade}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="Estado:"
-          type="text"
-          name="estado"
-          id="signupFormAdreessEstado"
-          value={state.estado}
-          error={errors.estado}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="CEP:"
-          type="number"
-          name="cep"
-          id="signupFormAdreessCEP"
-          value={state.cep}
-          error={errors.cep}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="Url Localização:"
-          type="text"
-          name="localizaçãoUrl"
-          id="signupFormAdreesslocalizaçãoUrl"
-          value={state.localizaçãoUrl}
-          error={errors.localizaçãoUrl}
-          onChange={handleChange}
-        />
-        
-        </fieldset>
-        <TextInput
-          label="CNPJ:"
-          type= "number"
-          name="cnpj"
-          id="signupFormCnpj"
-          value={state.cnpj}
-          error={errors.cnpj}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="Horário de Funcionamento:"
-          type= "text"
-          name="horarioDeFuncionamento"
-          id="signupFormHorarioDeFuncionamento"
-          value={state.horarioDeFuncionamento}
-          error={errors.horarioDeFuncionamento}
-          onChange={handleChange}
-        /> */}
-
-{/* fotoUrl: "", // Galeria de Fotos => colocar várias como? */}
 {errors ? <div className="alert alert-danger">{errors}</div> : null}
 
         <div className="form-group">

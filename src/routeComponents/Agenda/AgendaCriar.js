@@ -28,33 +28,10 @@ function AgendaCriar(props) {
   });
   const [errors, setErrors] = useState(
     null
-  //   {
-  //   // evento: null,
-  //   // atracao: null,
-  //   // data: null,
-  //   // horario: null,
-  //   // limiteDeMesaDe4pessoas: null,
-  //   // promocaoDoDia: null,
-  //   // taxa: null,
-  // }
   );
 
   const { id } = useParams();
   console.log(id)
-
-//   useEffect(() => {
-//     async function fetchEstab() {
-//       try {
-//         const response = await api.get(`/agenda/${id}`); 
-//         console.log(response.data)
-//         setAgendas({ ...response.data });
-//       } catch (err) {
-//         console.error(err);
-//       }
-//     }
-//     fetchEstab();
-//   }, [id]);
-// // useEffect só vai disparar a callback fetchReserva quando o id for extraido do parâmetro de rota
 
   function handleChange(event) {
     setAgenda({
