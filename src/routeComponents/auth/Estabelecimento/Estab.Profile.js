@@ -13,6 +13,9 @@ function EstabProfile() {
     
     //dados da agenda - AgendaModel
     const [agendas, setAgendas] = useState([]);
+
+    // //dados da agenda - AgendaModel
+    // const [reservas, setReservas] = useState([]);
   
     useEffect(() => {
       async function fetchProfile() {
@@ -23,13 +26,24 @@ function EstabProfile() {
   
           const agendasResponse = await api.get("/agenda");
           console.log(agendasResponse.data)
-  
+          
           if (agendasResponse.data.length) {
             setAgendas([
               ...agendasResponse.data
             ]);
             console.log(agendas)
           }
+          // RENDERIZAR RESERVAS!!!!
+          //RENDERIZAR AS RESERVAS
+          // const reservasResponse = await api.get("/reserva");
+          // console.log(reservasResponse.data)
+
+          // if (reservasResponse.data.length) {
+          //   setReservas([
+          //     ...reservasResponse.data
+          //   ]);
+          //   console.log(reservas)
+          // }
         } catch (err) {
           console.error(err);
         }
@@ -39,14 +53,17 @@ function EstabProfile() {
 
 console.log(state)
 console.log(agendas)
+// console.log(reservas)
 
     return (
       <div className="container mt-5"> 
-        <div className="d-flex justify-content-around"> 
-            <img className="img-fluid rounded-circle m-3" src="https://avatars.githubusercontent.com/u/81379613?s=60&v=4" alt="Sua foto de perfil"/>
-            {/* <img className="img-fluid rounded-circle" src={state.fotoUrl[0]} alt="Sua foto de perfil"/> */}
-            <h3>{state.name}</h3>
+      <div className="form-group d-flex">
+          <Link className="fas fa-angle-double-left pr-4" to="/">
+          <h7>Logoff</h7>
+          </Link>
         </div>
+          <h1>{state.name}</h1>
+          <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
         <hr />
 
         <div className="form-group d-flex">
@@ -78,6 +95,26 @@ console.log(agendas)
           ) : (null)}
         
         </div>
+        <hr/>
+        <div className="py-4">
+          <h3>RESERVAS</h3>
+
+          {/* DÚVIDA RENDERIZAR SEPARADO SOMENTE AS ATIVAS E AS NÃO ATIVAS COMO HISTÓRICO */}
+          {/* {reservas.length ? (
+            reservas.map((reserva) => {
+                return ( 
+                <div key={reserva._id} className="rounded shadow w-100 my-4 p-3 "> */}
+                  {/* <Link className="fas fa-eye" to={`/reserva/${reserva._id}`} /> */}
+                 {/* <p> <strong> Data: </strong> {reserva.data}</p>
+                 <p> <strong>Evento: </strong> {reserva.evento} </p>
+                 <p> <strong> Status: </strong> {reserva.status} </p>
+                 <p> <strong>Horario: </strong> {reserva.horario}</p> */}
+                {/* </div>); 
+            }) 
+          ) : (null)} */}
+        
+        </div>
+
       </div> 
     );
   }

@@ -9,12 +9,19 @@ function AgendaDetails() {
   
   const { id } = useParams();
 
+  const [reservas, setReservas] = useState([]);
+
   useEffect(() => {
     async function fetchAgenda() {
       try {
         const response = await api.get(`/agenda/${id}`); 
         console.log(response.data)
         setAgendas({ ...response.data });
+
+        const reservas = await api.get("/reserva");
+        console.log(reservas.data)
+        setReservas({ ...reservas.data });
+
       } catch (err) {
         console.error(err);
       }
@@ -24,6 +31,7 @@ function AgendaDetails() {
 // useEffect só vai disparar a callback fetchReserva quando o id for extraido do parâmetro de rota
 
 console.log(agendas)
+console.log(reservas)
 
   return (
     <div className="container mt-5">
@@ -67,18 +75,13 @@ console.log(agendas)
         <strong>Taxa de Entrada: </strong>
          {agendas.taxa}
         </p> 
-        {/* <Link className="btn btn-primary" to={`/agenda/${agendas._id}/editar`}>
-          Editar
-        </Link>  */}
         <div className="form-group d-flex m-4 justify-content-between">
           <Link className="fas fa-edit fa-2x" to={`/agenda/${agendas._id}/editar`} />
           <Link className="fas fa-trash-alt fa-2x" to={`/agenda/${agendas._id}/cancelar`} />
         </div>
         <br></br>   
-        <br></br>            
-        {/* <Link className="btn btn-primary" to={`/agenda/${agendas._id}/cancelar`}>
-          Cancelar
-        </Link>             */}
+        {/* NÃO TO CONSEGUINDO PEGAR AS RESERVAS DESSA AGENDA
+        <h1>Reservas </h1> */}
       </div>
   );
 }

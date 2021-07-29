@@ -35,18 +35,6 @@ function AgendaEditar(props){
 
 console.log(agenda)
 
-// //state 2 para capturar as informações do formulário de edição
-//   const [agendaEdit, setAgendaEdit] = useState({
-//     evento: "",
-//     atracao: "",
-//     data: "",
-//     horario: "",
-//     limiteDeMesaDe4pessoas: "",
-//     promocaoDoDia: "",
-//     taxa: "",
-//     status: "Ativa"
-//   });
-
   const [errors, setError] = useState(null);
 
   function handleChange(event) {
@@ -83,14 +71,6 @@ console.log(agenda)
         handleSubmit={handleSubmit} 
         error={errors}
       />
-
-        {/* <div className="form-group">
-          <div className=" d-flex justify-content-between">
-            <button className="btn btn-primary" type="submit">
-              Editar Agenda
-            </button>
-          </div>
-        </div> */}
     </div>
   </div>
   );

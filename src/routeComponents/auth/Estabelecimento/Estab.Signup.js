@@ -8,7 +8,7 @@ function EstabSignUp (props) {
     name: "", 
     password: "", 
     email: "",
-    fotoUrl: "",
+    foto: "",
     telefone: 0,
     redeSocialUrl: "",
     rua: "",
@@ -26,17 +26,40 @@ function EstabSignUp (props) {
   const [errors, setError] = useState(null);
 
   function handleChange(event) {
+    if (event.target.files) {
+      return setState({
+        ...state,
+        [event.currentTarget.name]: event.currentTarget.files[0],
+      });
+    }
     setState({
       ...state,
       [event.currentTarget.name]: event.currentTarget.value,
     });
   }
+  console.log(state)
 
+  //file = state.foto
+  async function handleFileUpload(file) {
+    const uploadData = new FormData();
+  
+    uploadData.append("foto", file);
+  
+    const response = await api.post("/upload", uploadData);
+  
+    return response.data.url;
+  }
+  
   async function handleSubmit(event) {
     event.preventDefault();
 
+    const fotoUrl = await handleFileUpload(state.foto);
+
     try {
-      await api.post("/signup_estab", state);
+      await api.post("/signup_estab", {
+        ...state,
+        fotoUrl,
+      });
       setError(null);
       props.history.push("/login_estab");
     } catch (err) {
@@ -84,12 +107,21 @@ function EstabSignUp (props) {
         />
 
         <TextInput
+          label="Foto"
+          type="file"
+          name="foto"
+          id="signupFormfoto"
+          error={errors}
+          onChange={handleChange}
+        />
+
+        <TextInput
           label="Número de Telefone:"
           type="number"
           name="telefone"
           id="signupFormTelefone"
           value={state.telefone}
-          e error={errors}
+          error={errors}
           onChange={handleChange}
         />
 
@@ -105,7 +137,7 @@ function EstabSignUp (props) {
         <fieldset>
           <legend>Endereço</legend>
           <TextInput
-          label="Rua:"
+          label="Rua/ Av:"
           type="text"
           name="rua"
           id="signupFormAdreessStreet"
@@ -188,7 +220,6 @@ function EstabSignUp (props) {
           onChange={handleChange}
         />
 
-{/* fotoUrl: "", // Galeria de Fotos => colocar várias como? */}
 {errors ? <div className="alert alert-danger">{errors}</div> : null}
 
         <div className="form-group">
