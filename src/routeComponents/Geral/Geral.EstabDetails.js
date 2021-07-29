@@ -1,27 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import api from "../../../apis/api";
+import api from "../../apis/api";
 
-function EstabProfile() {
+function EstabDetails() {
 
     //dados do estabelecimento - EstabModel
     const [state, setState] = useState({
       name: "", 
       email: "",
-      fotoUrl: "",
-      // id estabelecimento
-      // telefone: 0,
-      // redeSocialUrl: "",
-      // rua: "",
-      // bairro: "",
-      // cidade: "",
-      // numero: 0,
-      // estado: "",
-      // cep: 0,
-      // localizacaoUrl: "",
-      // rank: 5,
-      // cnpj: 0,
-      // horarioDeFuncionamento: "",
+      fotoUrl: ""
     });
     
     //dados da agenda - AgendaModel
@@ -55,38 +42,20 @@ console.log(agendas)
 
     return (
       <div className="container mt-5"> 
-        
-        {/* <Link className="btn btn-primary" to="/profile_estab/edit">
-          Editar Perfil ESTABELECIMENTO
-        </Link>
-   */}
-        <h1>Perfil ESTABELECIMENTO</h1>
+        <div className="d-flex justify-content-around"> 
+            <img className="img-fluid rounded-circle m-3" src="https://avatars.githubusercontent.com/u/81379613?s=60&v=4" alt="Sua foto de perfil"/>
+            {/* <img className="img-fluid rounded-circle" src={state.fotoUrl[0]} alt="Sua foto de perfil"/> */}
+            <h3>{state.name}</h3>
+        </div>
         <hr />
-  
-        <img
-          className="img-fluid rounded-circle"
-          src={state.fotoUrl}
-          alt="Sua foto de perfil"
-        />
-  
-        <p>
-          <strong>Nome: </strong>
-          {state.name}
-        </p>
 
         <div className="form-group d-flex">
-          <Link className="fas fa-edit fa-2x" to="/profile_estab" />
+          <Link className="fas fa-edit fa-2x" to="/profile_estab/edit" />
         </div>
-
         <hr />
         
         <div className="py-4">
           <h3>AGENDAS</h3>
-
-          {/* aqui o state._id é o id do estabelecimento */}
-          {/* <Link className="btn btn-lg btn-primary" to={`/agenda/${state._id}/criar`}> 
-              Incluir Agenda
-          </Link> */}
 
           <div className="form-group d-flex">
             <Link className="fas fa-calendar-plus fa-2x" to={`/agenda/${state._id}/criar`} />
@@ -113,4 +82,4 @@ console.log(agendas)
     );
   }
   
-export default EstabProfile;
+export default EstabDetails;
