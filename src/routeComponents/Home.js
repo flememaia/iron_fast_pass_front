@@ -13,7 +13,7 @@ function SignUp() {
         <h3 className="mt-3 mb-5">
           <img
             src={LogoHome}
-            style={{ height: "62%", width: "auto"}}
+            style={{ height: "62%", width: "62%"}}
             alt="logo"
           />
         </h3>
@@ -23,7 +23,7 @@ function SignUp() {
             style={{ backgroundColor: "#FF7600" }}
             to="/login"
           >
-            Sou <br />
+
             Cliente
           </Link>
           <br/>
@@ -32,7 +32,6 @@ function SignUp() {
             style={{ backgroundColor: "#FF7600" }}
             to="/login_estab"
           >
-            Tenho <br />
             Estabelecimento
           </Link>
 

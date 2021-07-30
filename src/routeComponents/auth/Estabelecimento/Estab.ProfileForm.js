@@ -130,9 +130,11 @@ function EstabProfileForm(props) {
       ) : null}
 
       <div className="form-group">
-        <button className="btn btn-primary" type="submit">
-          Enviar
-        </button>
+        <button
+          className="btn text-white"
+          style={{ backgroundColor: "#FF7600" }}
+          type="submit"
+        >Enviar</button>
       </div>
     </form>
   );

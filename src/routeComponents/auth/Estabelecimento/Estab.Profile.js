@@ -75,10 +75,15 @@ console.log(agendas)
         />
       </Link>
     </Navbar>
+    <div >
+            <Link className="fas fa-angle-double-left pr-4" style={{ color: "#FFFFFF" }} to="/">
+            <h7>Logoff</h7>
+            </Link>
+          </div>
 
     <div className="pag-fundo pt-4">
       <div className="container mt-5" style={{ color: "#FFA900" }}>
-      <h1>{state.name}</h1>
+        <h1>{state.name}</h1>
       <div className="form-group d-flex">
           <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
         </div>

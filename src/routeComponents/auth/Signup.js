@@ -20,7 +20,7 @@ function Home() {
       />
     </Navbar>
     
-    <div className="pag-fundo pt-4">
+    <div className="pag-fundo pd-4">
         <div className="container mt-5 " style={{ color: "#FFA900" }}>
           <div className="form-group d-flex">
             <Link
