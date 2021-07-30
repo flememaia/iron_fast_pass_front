@@ -4,7 +4,8 @@ import SelectInput from "../../components/SelectInput";
 function AgendaForm(props) {
   return (
     <form onSubmit={props.handleSubmit}>
-
+      <div style={{ fontSize: 16 }}>
+        <strong>
         {/* <TextInput
           label="Estabelecimento"
           type="text"
@@ -86,13 +87,19 @@ function AgendaForm(props) {
             onChange={props.handleChange}
             items={["Ativa", "Não Ativa"]}
         />
+        </strong>
+      </div>
 
       {props.error ? (
         <div className="alert alert-danger">{props.error}</div>
       ) : null}
 
       <div className="form-group">
-        <button className="btn btn-primary" type="submit">
+        <button
+          className="btn text-white"
+          style={{ backgroundColor: "#FF7600" }}
+          type="submit"
+        >
           Enviar
         </button>
       </div>

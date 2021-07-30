@@ -1,5 +1,5 @@
 import TextInput from "../../components/TextInput";
-import SelectInput from "../../components/SelectInput";
+// import SelectInput from "../../components/SelectInput";
 
 function ReservaForm(props) {
   return (
@@ -22,7 +22,7 @@ function ReservaForm(props) {
           onChange={props.handleChange}
         />
 
-        <SelectInput
+        {/* <SelectInput
             label="Status da Agenda"
             type="text"
             name="status"
@@ -31,14 +31,14 @@ function ReservaForm(props) {
             onChange={props.handleChange}
             items={["Aguardando Aprovação", "Aprovada", "Não Aprovada", 
             "Cancelada pelo Usuário", "Usuário Compareceu - emitir Avaliação", "Usuário Não Compareceu" ]}
-        />
+        /> */}
 
       {props.error ? (
         <div className="alert alert-danger">{props.error}</div>
       ) : null}
 
       <div className="form-group">
-        <button className="btn btn-primary" type="submit">
+        <button className="btn btn-primary" type="submit" style={{backgroundColor: "#FFA900"}}>
           Enviar
         </button>
       </div>

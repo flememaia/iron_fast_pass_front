@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import api from "../../../apis/api";
+import { Navbar } from "react-bootstrap";
+import LogoFixa from "../../../img/logo.png";
 
 function EstabProfile() {
 
@@ -56,27 +58,46 @@ console.log(agendas)
 // console.log(reservas)
 
     return (
-      <div className="container mt-5"> 
+      <div>
+      <Navbar
+      className="navbar sticky-top"
+      bg="white"
+      variant="white"
+      expand="lg"
+    >
+      <Link>
+        <img
+          className="pl-2 d-flex justify-content-start"
+          src={LogoFixa}
+          style={{ height: "30%", width: "30%" }}
+          alt="logo"
+          to="/"
+        />
+      </Link>
+    </Navbar>
+
+    <div className="pag-fundo pt-4">
+      <div className="container mt-5" style={{ color: "#FFA900" }}>
+      <h1>{state.name}</h1>
       <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/">
-          <h7>Logoff</h7>
-          </Link>
-        </div>
-          <h1>{state.name}</h1>
           <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
-        <hr />
+        </div>
+        <hr style={{ backgroundColor: "#FFFFFF" }}/>
 
         <div className="form-group d-flex">
-          <Link className="fas fa-edit fa-2x" to="/profile_estab/edit" />
+          <Link className="fas fa-edit fa-2x" style={{ color: "#FFFFFF" }} to="/profile_estab/edit" />
         </div>
-        <hr />
+        <hr style={{ backgroundColor: "#FFFFFF" }}/>
         
-        <div className="py-4">
-          <h3>AGENDAS</h3>
-
+        <div className="pt-4">
+          <h3>Agendas</h3>
+          <br/>
           <div className="form-group d-flex">
-            <Link className="fas fa-calendar-plus fa-2x" to={`/agenda/${state._id}/criar`} />
+            <Link className="fas fa-calendar-plus fa-2x" style={{ color: "#FFFFFF" }} 
+            to={`/agenda/${state._id}/criar`} />
           </div>
+
+
 
           {/* agendas => é o state das agendas => linha 24 */}
           {/* DÚVIDA RENDERIZAR SEPARADO SOMENTE AS ATIVAS E AS NÃO ATIVAS COMO HISTÓRICO */}
@@ -85,7 +106,7 @@ console.log(agendas)
                 return ( 
                 <div key={agenda._id} className="rounded shadow w-100 my-4 p-3 ">
                   {/* <Link className="text-decoration-none" to={`/agenda/${agenda._id}`}> Ver detalhes </Link> */}
-                  <Link className="fas fa-eye" to={`/agenda/${agenda._id}`} />
+                  <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} to={`/agenda/${agenda._id}`} />
                  <p> <strong> Data: </strong> {agenda.data}</p>
                  <p> <strong>Evento: </strong> {agenda.evento} </p>
                  <p> <strong> Status: </strong> {agenda.status} </p>
@@ -95,7 +116,8 @@ console.log(agendas)
           ) : (null)}
         
         </div>
-        <hr/>
+        <hr style={{ backgroundColor: "#FFFFFF" }}/>
+
         <div className="py-4">
           <h3>RESERVAS</h3>
 
@@ -114,8 +136,9 @@ console.log(agendas)
           ) : (null)} */}
         
         </div>
-
       </div> 
+      </div>
+      </div>
     );
   }
   

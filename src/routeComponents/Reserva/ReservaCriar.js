@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReservaForm from "./ReservaForm";
+import LogoFixa from "../../img/logo.png";
+import { Navbar } from "react-bootstrap";
 
 import api from "../../apis/api";
 
@@ -41,17 +43,43 @@ function ReservaCriar(props) {
 console.log(reserva)
 
 return (
-  <div className="container mt-5">
-    <div className="form-group d-flex">
-        <Link className="fas fa-angle-double-left pr-4" to="/profile" />
-      </div>
-    <h1>Fazer uma reserva</h1>
+  <div>
+      <Navbar
+        className="navbar sticky-top"
+        bg="white"
+        variant="white"
+        expand="lg"
+      >
+        <Link to="/profile">
+          <img
+            className="pl-2 d-flex justify-content-start"
+            src={LogoFixa}
+            style={{ height: "30%", width: "30%" }}
+            alt="logo"
+          />
+        </Link>
+      </Navbar>
+
+      <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <div className="form-group d-flex">
+            <Link
+              className="fas fa-angle-double-left pr-4"
+              style={{ color: "#FFFFFF" }}
+              to="/profile"
+            />
+          </div>
+          <h1 className="mb-5">
+            <strong>Fazer uma reserva</strong>
+          </h1>
     <ReservaForm
       state={reserva} 
       handleChange={handleChange} 
       handleSubmit={handleSubmit} 
       error={errors}
     />
+  </div>
+  </div>
   </div>
 );
 }

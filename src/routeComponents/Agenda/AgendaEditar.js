@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import AgendaForm from "./AgendaForm";
+import LogoFixa from "../../img/logo.png";
+import { Navbar } from "react-bootstrap";
 
 import api from "../../apis/api";
 
@@ -58,13 +60,35 @@ console.log(agenda)
 }
   
   return (
-  <div>
-    <div className="container mt-5">
-        <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/profile_estab" />
-          <h1>Editar Agenda</h1>
-        </div>
-        {/* <h4>{agenda.nameEstab}</h4> */}
+    <div>
+      <Navbar
+        className="navbar sticky-top"
+        bg="white"
+        variant="white"
+        expand="lg"
+      >
+        <Link to="/profile_estab">
+          <img
+            className="pl-2 d-flex justify-content-start"
+            src={LogoFixa}
+            style={{ height: "30%", width: "30%" }}
+            alt="logo"
+          />
+        </Link>
+      </Navbar>
+      <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <div className="form-group d-flex">
+            <Link
+              className="fas fa-angle-double-left pr-4"
+              style={{ color: "#FFFFFF" }}
+              to="/profile_estab"
+            />
+            </div>
+      <h1 className="mb-5">
+        <strong>Editar Agenda</strong>
+        </h1>
+      <h4>{agenda.nameEstab}</h4> 
       <AgendaForm
         state={agenda} 
         handleChange={handleChange} 
@@ -72,7 +96,8 @@ console.log(agenda)
         error={errors}
       />
     </div>
-  </div>
+    </div>
+</div>
   );
 }
 

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import LogoFixa from "../../img/logo.png";
+import { Navbar } from "react-bootstrap";
 
 import api from "../../apis/api";
 
@@ -34,11 +36,35 @@ console.log(reservas)
 // console.log(nameEstab, atracao, data, evento)
 
   return (
-    <div className="container mt-5">
-        <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/profile" />
-        </div>
-        <h1>Reserva do Rolê</h1>
+    <div>
+    <Navbar
+      className="navbar sticky-top"
+      bg="white"
+      variant="white"
+      expand="lg"
+    >
+      <Link to="/profile_estab">
+        <img
+          className="pl-2 d-flex justify-content-start"
+          src={LogoFixa}
+          style={{ height: "30%", width: "30%" }}
+          alt="logo"
+        /> 
+      </Link>
+    </Navbar>   
+
+   <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <div className="form-group d-flex">
+            <Link
+              className="fas fa-angle-double-left pr-4"
+              style={{ color: "#FFFFFF" }}
+              to="/profile"
+            />
+          </div>
+          <h1 className="mb-5">
+            <strong>Reserva do Rolê</strong></h1>
+
         {/* <p>
           <strong> Data: </strong>
               {data}
@@ -67,10 +93,14 @@ console.log(reservas)
         <strong>Quantidade de Pessoas: </strong>
         {reservas.quantidadeDePessoas}
         </p>
-        <Link className="btn btn-primary" to={`/reserva/${reservas._id}/cancelar`}>
+        <Link className="btn text-white"
+          style={{ backgroundColor: "#FF7600" }} 
+          to={`/reserva/${reservas._id}/cancelar`}>
           Cancelar
         </Link>            
+        </div>
       </div>
+    </div>
   );
 }
 

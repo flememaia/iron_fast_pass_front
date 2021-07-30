@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../../apis/api";
 import TextInput from "../../../components/TextInput";
+import SignupLogo from "../../../img/logosignup.png";
+import { Navbar } from "react-bootstrap";
 
 function EstabSignUp (props) {
   const [state, setState] = useState({ 
@@ -69,13 +71,36 @@ function EstabSignUp (props) {
   }
 
   return (
-    <div className="container mt-5">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/signupAll" />
-          <h1>Cadastro Estabelecimento!</h1>
-        </div>
+    <div>
+    <Navbar
+      className="navbar sticky-top"
+      bg="white"
+      variant="white"
+      expand="lg"
+    >
+      <img
+        className="container d-flex"
+        src={SignupLogo}
+        style={{ height: "23%", width: "23%" }}
+        alt="logo"
+      />
+    </Navbar>
 
+    <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group d-flex">
+              <Link
+                className="fas fa-angle-double-left pr-4"
+                style={{ color: "#FFFFFF" }}
+                to="/signupAll"
+              />
+              <h1>
+                <strong>Cadastro Empresa!</strong>
+              </h1>
+            </div>
+            <div style={{ fontSize: 17 }}>
+              <strong>
         <TextInput
           label="Estabelecimento:"
           type="text"
@@ -219,22 +244,31 @@ function EstabSignUp (props) {
           error={errors}
           onChange={handleChange}
         />
-
-{errors ? <div className="alert alert-danger">{errors}</div> : null}
+              </strong>
+            </div>
+        {errors ? <div className="alert alert-danger">{errors}</div> : null}
 
         <div className="form-group">
-          <div className=" d-flex justify-content-between">
-            <button className="btn btn-primary" type="submit">
-              Cadastrar
-            </button>
-          </div>
-          <br />
-          <Link to="/login_estab">
-            Já tem uma conta? <br />
-            Clique Aqui!
-          </Link>
+              <div className=" d-flex justify-content-between">
+                <button
+                  className="btn text-white"
+                  style={{ backgroundColor: "#FF7600" }}
+                  type="submit"
+                >
+                  Cadastrar
+                </button>
+              </div>
+              <br />
+              <p style={{ color: "#FFA900" }}>
+                Já tem uma conta? <br />
+                <Link className="text-white" to="/login_estab">
+                  Clique Aqui!
+                </Link>
+              </p>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

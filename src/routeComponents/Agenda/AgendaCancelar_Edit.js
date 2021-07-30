@@ -27,22 +27,28 @@ function AgendaCancelar(){
   }
 
 return (
+  <div>
+  <div className="pag-fundo">
+  <div className="container mt-5" style={{ color: "#FFA900" }}>
   <Modal show={show} onHide={handleClose}>
-    <Modal.Header closeButton>
-      <Modal.Title>Cancelar esta Agenda</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-      Tem certeza que deseja cancelar esta reserva? Essa operação é irreversível.
-    </Modal.Body>
-    <Modal.Footer>
-      <Button variant="secondary" onClick={handleClose}>
-        Voltar
-      </Button>
-      <Button variant="danger" onClick={handleDelete}>
-        Cancelar
-      </Button>
-    </Modal.Footer>
-  </Modal>
+  <Modal.Header closeButton>
+    <Modal.Title>Cancelar esta Agenda</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    Tem certeza que deseja cancelar esta agenda? Essa operação é irreversível.
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={handleClose}>
+      Voltar
+    </Button>
+    <Button variant="danger" style={{ backgroundColor: "#FFA900" }} onClick={handleDelete}>
+      Cancelar
+    </Button>
+  </Modal.Footer>
+</Modal>
+</div>
+</div>
+</div>
 );
 }
 

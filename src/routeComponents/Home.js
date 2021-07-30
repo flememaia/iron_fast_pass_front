@@ -1,36 +1,49 @@
 import React from "react";
-import BemVindo from "../img/bem-vindo.png";
 import { Link } from "react-router-dom";
+import "../assets/styles/index.css";
+import LogoHome from "../img/logohome.png";
 
 function SignUp() {
   return (
-    <div className="text-center d-flex flex-column align-items-center ">
-      <div src={BemVindo} alt="logo" />
-      <h3 className="mt-5 mb-5">
-        <strong>noLines</strong>
-      </h3>
-      <div className="d-flex flex-column align-items-center">
-        <Link
-          className="btn btn-lg btn-primary pl-5 pr-5 pt-3 pb-3 mb-2"
-          to="/login"
-        >
-          Sou <br />
-          Cliente
-        </Link>
-        <h3>ou</h3>
-        <Link
-          className="btn btn-lg btn-primary pl-2 pr-2 pt-3 pb-3 mt-2 mb-4"
-          to="/login_estab"
-        >
-          Tenho <br />
-          Estabelecimento
-        </Link>
+    <div className="pag-fundo pt-4">
+      <div
+        className="text-center d-flex flex-column align-items-center "
+        style={{ color: "#FFFFFF" }}
+      >
+        <h3 className="mt-3 mb-5">
+          <img
+            src={LogoHome}
+            style={{ height: "62%", width: "auto"}}
+            alt="logo"
+          />
+        </h3>
+        <div className="d-flex flex-column align-items-center">
+          <Link
+            className="btn btn-lg btn-primary pt-2Z pl-5 pr-5 pb-3 mt-4 mb-2"
+            style={{ backgroundColor: "#FF7600" }}
+            to="/login"
+          >
+            Sou <br />
+            Cliente
+          </Link>
+          <br/>
+          <Link
+            className="btn btn-lg btn-primary pl-2 pr-2 pt-3 pb-3 mt-2 mb-4"
+            style={{ backgroundColor: "#FF7600" }}
+            to="/login_estab"
+          >
+            Tenho <br />
+            Estabelecimento
+          </Link>
 
-        <p>
-          Ainda não está <br />
-          cadastrado? <br />
-          <Link to="/signupAll">Registre-se</Link>
-        </p>
+          <p style={{ color: "#FFA900" }}>
+            Ainda não está <br />
+            cadastrado? <br />
+            <Link className="text-white" to="/signupAll">
+              Registre-se
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
