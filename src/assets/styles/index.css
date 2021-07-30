@@ -1,1 +1,7 @@
-/* Seus estilos globais vão aqui */
+.pag-fundo{
+    background-color: #56005C;
+    margin: 0;
+    padding-top: 100%;
+    padding-bottom: 100%;
+}
+

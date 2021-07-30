@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ClientProfileForm from "./Client.ProfileForm";
-
 import api from "../../../apis/api";
+import { Navbar } from "react-bootstrap";
+import LogoFixa from "../../../img/logo.png";
 
 function ClienteProfileEditar(props){
 
@@ -84,15 +85,35 @@ async function handleFileUpload(file) {
   
   return (
   <div>
-    <div className="container mt-5">
-        <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/profile" />
-          <h1>Editar Perfil</h1>
+      <Navbar
+        className="navbar sticky-top"
+        bg="white"
+        variant="white"
+        expand="lg"
+      >
+        <Link>
+          <img
+            className="pl-2 d-flex justify-content-start"
+            src={LogoFixa}
+            style={{ height: "30%", width: "30%" }}
+            alt="logo"
+          />
+        </Link>
+      </Navbar>
+
+      
+      <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <div className="form-group d-flex">
+            <Link className="fas fa-angle-double-left pr-4" style={{ color: "#FFFFFF" }} to="/profile" />
+            <h1>Editar Perfil</h1>
         </div>
         <div className="d-flex justify-content-around"> 
-            <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
+          <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
         <h3 className="align-self-center">{state.name}</h3>
       </div>
+      <hr style={{ backgroundColor: "#FFFFFF" }}/>
+
         <br/>
         <br/>
       <ClientProfileForm
@@ -102,6 +123,7 @@ async function handleFileUpload(file) {
         error={errors}
       />
     </div>
+  </div>
   </div>
   );
 }

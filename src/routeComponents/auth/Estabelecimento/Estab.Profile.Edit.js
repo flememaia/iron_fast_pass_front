@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import api from "../../../apis/api";
 import EstabProfileForm from "./Estab.ProfileForm";
+import { Navbar } from "react-bootstrap";
+import LogoFixa from "../../../img/logo.png";
 
 function EstabProfileEditar(props) {
 
@@ -83,14 +85,34 @@ const [errors, setError] = useState(null);
     }
 }
     return (
-      <div className="container mt-5"> 
-        <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/profile_estab" />
-          <h1>Editar Perfil</h1>
-        </div>
-          <h1>{state.name}</h1>
-          <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
-        <hr/>
+      <div>
+      <Navbar
+        className="navbar sticky-top"
+        bg="white"
+        variant="white"
+        expand="lg"
+      >
+        <Link>
+          <img
+            className="pl-2 d-flex justify-content-start"
+            src={LogoFixa}
+            style={{ height: "30%", width: "30%" }}
+            alt="logo"
+          />
+        </Link>
+      </Navbar>
+
+      <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <div className="form-group d-flex">
+            <Link className="fas fa-angle-double-left pr-4" style={{ color: "#FFFFFF" }} to="/profile_estab" />
+            <h1>Editar Perfil</h1>
+            <div className="d-flex justify-content-around"> 
+              <h1>{state.name}</h1>
+              <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
+            </div>
+          <hr style={{ backgroundColor: "#FFFFFF" }}/>
+
         <br/>
         <br/>
       <EstabProfileForm
@@ -100,6 +122,9 @@ const [errors, setError] = useState(null);
         error={errors}
       />
       </div>
+      </div>
+    </div>
+    </div>
     );
   }
   

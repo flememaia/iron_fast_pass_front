@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import LogoFixa from "../../img/logo.png";
+import { Navbar } from "react-bootstrap";
 
 import api from "../../apis/api";
 
@@ -34,54 +36,76 @@ console.log(agendas)
 console.log(reservas)
 
   return (
-    <div className="container mt-5">
+    <div>
+      <Navbar
+        className="navbar sticky-top"
+        bg="white"
+        variant="white"
+        expand="lg"
+      >
+        <Link to="/profile_estab">
+          <img
+            className="pl-2 d-flex justify-content-start"
+            src={LogoFixa}
+            style={{ height: "30%", width: "30%" }}
+            alt="logo"
+          />
+        </Link>
+      </Navbar>
+      <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
         <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/profile_estab" />
+          <Link 
+          className="fas fa-angle-double-left pr-4"
+          style={{ color: "#FFFFFF" }}to="/profile_estab" />
         </div>
-        <h1>AGENDA Específica</h1>
+        <h1 className="pb-4"><strong>Agenda Específica</strong></h1>  
         <p>
           <strong> Estabelecimento: </strong>
-            {agendas.nameEstab}
+          <p style={{ color: "#FFFFFF" }}>{agendas.nameEstab}</p>
         </p>
         <p>
           <strong> Data: </strong>
-            {agendas.data}
+          <p style={{ color: "#FFFFFF" }}>{agendas.data}</p>
         </p>
         <p>
         <strong>Horario: </strong>
-        {agendas.horario}
+        <p style={{ color: "#FFFFFF" }}>{agendas.horario}</p>
         </p>            
         <p>
           <strong>Evento: </strong>
-          {agendas.evento}
+          <p style={{ color: "#FFFFFF" }}>{agendas.evento}</p>
+          
         </p>
         <p>
           <strong>Atração: </strong>
-          {agendas.atracao}
+          <p style={{ color: "#FFFFFF" }}>{agendas.atracao}</p>
         </p>
         <p>
         <strong>Status: </strong>
-         {agendas.status}
+        <p style={{ color: "#FFFFFF" }}>{agendas.status}</p>
         </p>  
         <p>
         <strong>Limite de Mesas de 4 Pessoas: </strong>
-         {agendas.limiteDeMesaDe4pessoas}
+        <p style={{ color: "#FFFFFF" }}>{agendas.limiteDeMesaDe4pessoas}</p>
+         
         </p>  
         <p>
         <strong>Promoção do Dia: </strong>
-         {agendas.promocaoDoDia}
+         <p style={{ color: "#FFFFFF" }}>{agendas.promocaoDoDia}</p>
         </p> 
         <p>
         <strong>Taxa de Entrada: </strong>
-         {agendas.taxa}
+        <p style={{ color: "#FFFFFF" }}>{agendas.taxa}</p>
         </p> 
         <div className="form-group d-flex m-4 justify-content-between">
-          <Link className="fas fa-edit fa-2x" to={`/agenda/${agendas._id}/editar`} />
-          <Link className="fas fa-trash-alt fa-2x" to={`/agenda/${agendas._id}/cancelar`} />
+          <Link className="fas fa-edit fa-2x" style={{ color: "#FFFFFF" }} to={`/agenda/${agendas._id}/editar`} />
+          <Link className="fas fa-trash-alt fa-2x" style={{ color: "#FFFFFF" }} to={`/agenda/${agendas._id}/cancelar`} />
         </div>
         <br></br>   
-        {/* NÃO TO CONSEGUINDO PEGAR AS RESERVAS DESSA AGENDA
-        <h1>Reservas </h1> */}
+        <br></br>            
+      </div>
+      </div>
       </div>
   );
 }

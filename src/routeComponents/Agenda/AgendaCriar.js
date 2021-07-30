@@ -2,8 +2,9 @@ import React, { useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import api from "../../apis/api";
 import AgendaForm from "./AgendaForm";
-
 import { AuthContext } from "../../contexts/authContext";
+import LogoFixa from "../../img/logo.png";
+import { Navbar } from "react-bootstrap";
 
 function AgendaCriar(props) {
 
@@ -64,18 +65,45 @@ function AgendaCriar(props) {
   }
   
   return (
-    <div className="container mt-5">
-      <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/profile_estab" />
+    <div>
+      <Navbar
+        className="navbar sticky-top"
+        bg="white"
+        variant="white"
+        expand="lg"
+      >
+        <Link to="/profile_estab">
+          <img
+            className="pl-2 d-flex justify-content-start"
+            src={LogoFixa}
+            style={{ height: "30%", width: "30%" }}
+            alt="logo"
+          />
+        </Link>
+      </Navbar>
+          <div className="pag-fundo pt-4">
+            <div className="container mt-5" style={{ color: "#FFA900" }}>
+              <div className="form-group d-flex">
+                <Link
+                  className="fas fa-angle-double-left pr-4"
+                  style={{ color: "#FFFFFF" }}
+                  to="/profile_estab"
+                />
+                </div>
+          <h1 className="mb-5">
+            <strong>
+            Incluir Agenda
+            </strong>
+            </h1>
+          <h4>{agenda.nameEstab}</h4>
+          <AgendaForm
+            state={agenda} 
+            handleChange={handleChange} 
+            handleSubmit={handleSubmit} 
+            error={errors}
+          />
         </div>
-      <h1>Incluir Agenda</h1>
-      <h4>{agenda.nameEstab}</h4>
-      <AgendaForm
-        state={agenda} 
-        handleChange={handleChange} 
-        handleSubmit={handleSubmit} 
-        error={errors}
-      />
+      </div>
     </div>
   );
 }

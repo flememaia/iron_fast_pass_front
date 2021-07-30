@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-
+import LogoFixa from "../../../img/logo.png"
+import { Navbar } from "react-bootstrap";
 import api from "../../../apis/api";
 
 function ClienteAgendaDetails() {
@@ -28,11 +29,31 @@ function ClienteAgendaDetails() {
 console.log(agendas)
 
   return (
-    <div className="container mt-5">
-        <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/profile_estab" />
+    <div>
+    <Navbar
+  className="navbar sticky-top"
+  bg="white"
+  variant="white"
+  expand="lg"
+>
+  <Link to="/profile_estab">
+    <img
+      className="pl-2 d-flex justify-content-start"
+      src={LogoFixa}
+      style={{ height: "30%", width: "30%" }}
+      alt="logo"
+    />
+  </Link>
+</Navbar>
+
+<div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+        <div className="form-group d-flex pb-3">
+          <Link  
+          className="fas fa-angle-double-left pr-4"
+          style={{ color: "#FFFFFF" }}to="/profile_estab" />
         </div>
-        <h1>AGENDA Específica</h1>
+        <h1 className="pb-4"><strong>Agenda Específica</strong></h1>
         <p>
           <strong> Estabelecimento: </strong>
             {agendas.nameEstab}
@@ -69,10 +90,16 @@ console.log(agendas)
         <strong>Taxa de Entrada: </strong>
          {agendas.taxa}
         </p> 
-        <div className="form-group d-flex m-4 justify-content-between">
-          <Link className="btn btn-primary" to={`/agenda/${agendas._id}/reserva`} >
-            Fazer uma Reserva </Link>
+        <div className="form-group d-flex pt-5 jusd-flex justify-content-center">
+          <Link 
+          className="btn btn-primary" 
+          style={{ backgroundColor: "#FF7600" }} 
+          to={`/agenda/${agendas._id}/reserva`} >
+            Fazer uma Reserva 
+            </Link>
         </div>
+        </div>
+      </div>
       </div>
   );
 }

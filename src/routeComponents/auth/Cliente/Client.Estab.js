@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Navbar } from "react-bootstrap";
+import LogoFixa from "../../../img/logo.png"
 import api from "../../../apis/api";
 
 function Estab() {
@@ -48,18 +50,41 @@ function Estab() {
 console.log(estab)
 
   return (
-        
-    <div className="container mt-5">
-      <Link className="fas fa-angle-double-left pr-4" to="/profile" />
-      <h6>Componente - Client.Estab</h6>
+    <div>
+    <Navbar
+      className="navbar sticky-top"
+      bg="white"
+      variant="white"
+      expand="lg"
+    >
+      <Link to="/profile">
+        <img
+          className="pl-2 d-flex justify-content-start"
+          src={LogoFixa}
+          style={{ height: "30%", width: "30%" }}
+          alt="logo"
+        />
+      </Link>
+    </Navbar>
+    <div className="pag-fundo pt-4">
+       <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <div className="form-group d-flex">
+            <Link
+              className="fas fa-angle-double-left pr-4"
+              style={{ color: "#FFFFFF" }}
+              to="/profile"
+            />
+          </div>
+
         <div className="d-flex justify-content-around"> 
           <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
           <h3 className="align-self-center">{state.name}</h3>
         </div>
-        <hr />
+        <hr style={{ backgroundColor: "#FFFFFF" }} />
 
-        <div className="py-4">
-          <div className="rounded shadow w-100 my-4 p-3">
+  <div className="p-4">
+    <h3>Estabelecimento</h3>
+        <div className="rounded shadow w-100 my-4 p-3" style={{backgroundColor: "#FFA900", color: "#56005C"}}>
           <h1>{estab.name}</h1>
               {/* <img className="img-fluid m-3" src={estab.fotoUrl[0]} alt="Sua foto de perfil"/> */}
               <p><strong>{estab.email}</strong></p>
@@ -78,7 +103,7 @@ console.log(estab)
             agendas.map((agenda) => {
                 return ( 
                 <div key={agenda._id} className="rounded shadow w-100 my-4 p-3 ">
-                <Link className="fas fa-eye" to={`/client_agenda/${agenda._id}`} />
+                <Link className="fas fa-eye" style={{ color: "#FFFFFF" }} to={`/client_agenda/${agenda._id}`} />
                  <p> <strong> Data: </strong> {agenda.data}</p>
                  <p> <strong>Evento: </strong> {agenda.evento} </p>
                  <p> <strong> Status: </strong> {agenda.status} </p>
@@ -86,6 +111,8 @@ console.log(estab)
                 </div>); 
             }) 
           ) : (null)}
+      </div> 
+      </div> 
       </div> 
     );
   }

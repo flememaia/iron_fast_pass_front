@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import api from "../../../apis/api";
 import TextInput from "../../../components/TextInput";
 import { AuthContext } from "../../../contexts/authContext";
+import { Navbar } from "react-bootstrap";
+import "../../../assets/styles/index.css";
+import SignupLogo from "../../../img/logosignup.png";
+
 
 function ClientLogin(props) {
   const authContext = useContext(AuthContext);
@@ -41,13 +45,37 @@ function ClientLogin(props) {
   }
 
   return (
-    <div className="container mt-5">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group d-flex">
-          <Link className="fas fa-angle-double-left pr-4" to="/" />
-          <h1>Login Cliente</h1>
-        </div>
+    <div>
+      <Navbar
+        className="navbar sticky-top"
+        bg="white"
+        variant="white"
+        expand="lg"
+      >
+        <img
+          className="container d-flex"
+          src={SignupLogo}
+          style={{ height: "23%", width: "23%" }}
+          alt="logo"
+        />
+      </Navbar>
 
+      <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group d-flex pb-3">
+              <Link
+                className="fas fa-angle-double-left pr-4"
+                style={{ color: "#FFFFFF" }}
+                to="/"
+              />
+              <h1 className="pl-2">
+                <strong>Login Usuário</strong>
+              </h1>
+            </div>
+
+            <div style={{ fontSize: 16 }}>
+              <strong>
         <TextInput
           label="E-mail:"
           type="email"
@@ -66,25 +94,33 @@ function ClientLogin(props) {
           error={errors.password}
           onChange={handleChange}
         />
-        <div className="form-group">
-          <div className=" d-flex justify-content-between">
-            {/* <Link className="btn btn-primary" to="/">
-              Voltar
-            </Link> */}
-            <div className=" d-flex justify-content-between">
-              <button className="btn btn-primary" type="submit">
-                Login
-              </button>
+        </strong>
             </div>
-          </div>
-          <br />
 
-          <Link to="/signup">
-            Ainda não tenho uma conta? <br />
-            Clique Aqui!
-          </Link>
+
+
+            <div className="form-group">
+              <div className=" d-flex justify-content-between">
+                <button
+                  className="btn text-white"
+                  style={{ backgroundColor: "#FF7600" }}
+                  type="submit"
+                >
+                  Login
+                </button>
+              </div>
+
+              <br />
+              <p style={{ color: "#FFA900" }}>
+                Ainda não tenho uma conta? <br />
+                <Link className="text-white" to="/signup">
+                  Clique Aqui!
+                </Link>
+              </p>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
