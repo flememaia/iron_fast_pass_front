@@ -25,6 +25,13 @@ function EstabProfile() {
           const response = await api.get("/profile_estab");
           setState({ ...response.data });
           console.log(response.data)
+
+          if (response.data) {
+            setState({
+              ...response.data
+            });
+            console.log(state)
+          }
   
           const agendasResponse = await api.get("/agenda");
           console.log(agendasResponse.data)
@@ -76,7 +83,7 @@ console.log(agendas)
       </Link>
     </Navbar>
     <div >
-            <Link className="fas fa-angle-double-left pr-4" style={{ color: "#FFFFFF" }} to="/">
+            <Link className="fas fa-sign-out-alt pr-4" style={{ color: "#56005C" }} to="/">
             <h7>Logoff</h7>
             </Link>
           </div>
@@ -125,6 +132,7 @@ console.log(agendas)
 
         <div className="py-4">
           <h3>RESERVAS</h3>
+          <Link to="/reserva_estab">RESERVAS</Link>
 
           {/* DÚVIDA RENDERIZAR SEPARADO SOMENTE AS ATIVAS E AS NÃO ATIVAS COMO HISTÓRICO */}
           {/* {reservas.length ? (

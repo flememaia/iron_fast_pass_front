@@ -31,6 +31,9 @@ import ReservaCriar from "../routeComponents/Reserva/ReservaCriar";
 import ReservaCriadaSucesso from "../routeComponents/Reserva/ReservaCriadaComSucesso";
 import ClienteProfileEditar from "../routeComponents/auth/Cliente/Client.Profile.Edit";
 import EstabProfileEditar from "../routeComponents/auth/Estabelecimento/Estab.Profile.Edit";
+import ReservaAllEstab from "../routeComponents/Reserva/ReservaAll.Estab";
+import ReservaDetailsEstab from "../routeComponents/Reserva/ReservaDetailsEstab";
+import ReservaEditEstab from "../routeComponents/Reserva/ReservaEdit.Estab";
 
 function App() {
   return (
@@ -54,7 +57,10 @@ function App() {
               <ProtectedRoute exact path="/agenda/:id/cancelar" component={AgendaCancelar} />
               <ProtectedRoute exact path="/agenda/:id/criar" component={AgendaCriar} />
               <ProtectedRoute exact path="/agenda/:id/editar" component={AgendaEditar} />
-
+              <ProtectedRoute exact path="/reserva_estab" component={ReservaAllEstab} />
+              <ProtectedRoute exact path="/reserva_estab/:id" component={ReservaDetailsEstab} />
+              <ProtectedRoute exact path="/reserva_estab/:id/edit_status" component={ReservaEditEstab} />
+         
 
 
           <Route path="/signup" component={ClientSignUp}/>
@@ -67,13 +73,16 @@ function App() {
               <ProtectedRoute exact path="/client_agenda/:id" component={ClienteAgendaDetails} />
               <ProtectedRoute exact path="/agenda/:id/reserva" component={ReservaCriar} />
               <ProtectedRoute exact path="/reserva-criada-sucesso" component={ReservaCriadaSucesso} />
+
+              {/* Ver detalhes da reserva no Cliente logado. Também da certo no estabelecimento? Sim, mas 
+              aparece opções que não deveriam, como cancelar e o voltar direciona para o profile do cliente.
+              uma opção seria o goback() 
+              Por enquanto, vou renderizar outro componente. */}
               <ProtectedRoute exact path="/reserva/:id" component={ReservaDetails} />
               <ProtectedRoute exact path="/reserva/:id/cancelar" component={ReservaCancelar} />
+              
 
 
-
-
-          {/* to={`/agenda/${agendas._id}/editar`} */}
         </Switch>
       </AuthContextComponent>
     </BrowserRouter>
