@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import api from "../../../apis/api";
 import { Navbar } from "react-bootstrap";
 import LogoFixa from "../../../img/logo.png";
+import Rating from "../../../components/Rating";
 
 function ClientProfile() {
   const [state, setState] = useState({
     name: "", 
     email: "",
     fotoUrl: "",
+    rank: ""
   });
 
   const [reservas, setReservas] = useState([]);
@@ -60,30 +62,27 @@ function ClientProfile() {
           />
         </Link>
       </Navbar>
-      <div >
-            <Link className="fas fa-angle-double-left pr-4" style={{ color: "#FFFFFF" }} to="/">
-            <h7>Logoff</h7>
-            </Link>
-          </div>
         <div className="pag-fundo pt-4">
+        <div className="d-flex justify-content-between m-3">
+            <Link className="fas fa-edit fa-2x ms-3" style={{ color: "#FFA900" }} to="/profile/edit" />
+            <Link className="fas fa-sign-out-alt fa-2x pr-4 me-3" style={{ color: "#FFA900" }} to="/"/>
+            {/* <p style={{fontSize: "20px"}}>SignOut</p> */}
+          </div>
+        {/* <div className="form-group d-flex justify-content-end m-3">
+              <Link className="fas fa-edit fa-2x" style={{ color: "#FFFFFF" }} to="/profile/edit" />
+            </div> */}
           <div className="container mt-5" style={{ color: "#FFA900" }}>
             <div className="d-flex justify-content-around"> 
               <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
                 <h3 className="align-self-center">{state.name}</h3>
             </div>
-        
+            <Rating style={{ color: "#FFA900" }} >{state.rank}</Rating>
+
             <hr style={{ backgroundColor: "#FFFFFF" }}/>
 
-            <div className="form-group d-flex">
-              <Link className="fas fa-edit fa-2x" style={{ color: "#FFFFFF" }} to="/profile/edit" />
-            </div>
-            <hr style={{ backgroundColor: "#FFFFFF" }}/>
-
-            <Link className="btn btn-lg btn-primary" style={{ backgroundColor: "#FF7600" }} to="/allestab"> 
+            <Link className="btn btn-lg btn-primary m-3" style={{ backgroundColor: "#FF7600", fontSize: "30px"}} to="/allestab"> 
                 E aí, qual vai ser o rolê?
             </Link>
-
-
 
       <div className="pt-4">
         <h3>Suas Reservas</h3>
@@ -95,19 +94,19 @@ function ClientProfile() {
                 <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} to={`/reserva/${reserva._id}`} />
                   <p>
                     <strong> Data: </strong>
-                    {reserva.data}
+                    <span style={{color: "#FFFFFF"}}>{reserva.data}</span>
                   </p>
                   <p>
                     <strong>Evento: </strong>
-                    {reserva.evento}
+                    <span style={{color: "#FFFFFF"}}>{reserva.evento}</span>
                   </p>
                   <p>
                     <strong>Status: </strong>
-                    {reserva.status}
+                    <span style={{color: "#FFFFFF"}}>{reserva.status}</span>
                   </p>
                   <p>
                     <strong>Horario: </strong>
-                      {reserva.horario}
+                    <span style={{color: "#FFFFFF"}}>{reserva.horario}</span>
                   </p>
               </div>
             );

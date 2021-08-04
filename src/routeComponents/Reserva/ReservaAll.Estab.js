@@ -62,6 +62,8 @@ console.log(reservas)
           </div>
           <h1 className="mb-5">
             <strong>Reservas</strong></h1>
+            <h2 className="mb-5">Ativas</h2>
+            <h3 className="mb-5">Aguardando Aprovação</h3>
             {reservas.length ? (
             reservas.filter(reserva => reserva.status === "Aguardando Aprovação")
             .map((reserva) => {
@@ -75,10 +77,24 @@ console.log(reservas)
             }) 
           ) : (null)}  
 
+            <h3 className="mb-5">Aprovada</h3>
+            {reservas.length ? (
+            reservas.filter(reserva => reserva.status === "Aprovada")
+            .map((reserva) => {
+                return ( 
+                <div key={reserva._id} className="rounded shadow w-100 my-4 p-3 ">
+                  <Link className="fas fa-eye" to={`/reserva_estab/${reserva._id}`} />
+                  <p> <strong>Horario: </strong> {reserva.horario}</p>
+                 <p> <strong>Quantidade de Pessoas: </strong> {reserva.quantidadeDePessoas} </p>                 
+                 <p> <strong> Status: </strong> {reserva.status} </p>
+                </div>); 
+            }) 
+          ) : (null)}
+
           <h1 className="mb-5">
             <strong>Histórico</strong></h1>
           {reservas.length ? (
-            reservas.filter(reserva => reserva.status !== "Aguardando Aprovação")
+            reservas.filter(reserva => reserva.status !== "Aprovada" || reserva.status !== "Aguardando Aprovação")
             .map((reserva) => {
                 return ( 
                 <div key={reserva._id} className="rounded shadow w-100 my-4 p-3 ">
@@ -89,16 +105,6 @@ console.log(reservas)
                 </div>); 
             }) 
           ) : (null)}  
-            {/* {reservas.length ? (
-            reservas.map((reserva) => {
-                return ( 
-                <div key={reserva._id} className="rounded shadow w-100 my-4 p-3 ">
-                  <p> <strong>Horario: </strong> {reserva.horario}</p>
-                 <p> <strong>Quantidade de Pessoas: </strong> {reserva.quantidadeDePessoas} </p>                 
-                 <p> <strong> Status: </strong> {reserva.status} </p>
-                </div>); 
-            }) 
-          ) : (null)}          */}
         </div>
       </div>
     </div>

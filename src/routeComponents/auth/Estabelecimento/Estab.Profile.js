@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import api from "../../../apis/api";
 import { Navbar } from "react-bootstrap";
 import LogoFixa from "../../../img/logo.png";
+import Rating from "../../../components/Rating";
 
 function EstabProfile() {
 
@@ -15,9 +16,6 @@ function EstabProfile() {
     
     //dados da agenda - AgendaModel
     const [agendas, setAgendas] = useState([]);
-
-    // //dados da agenda - AgendaModel
-    // const [reservas, setReservas] = useState([]);
   
     useEffect(() => {
       async function fetchProfile() {
@@ -42,17 +40,6 @@ function EstabProfile() {
             ]);
             console.log(agendas)
           }
-          // RENDERIZAR RESERVAS!!!!
-          //RENDERIZAR AS RESERVAS
-          // const reservasResponse = await api.get("/reserva");
-          // console.log(reservasResponse.data)
-
-          // if (reservasResponse.data.length) {
-          //   setReservas([
-          //     ...reservasResponse.data
-          //   ]);
-          //   console.log(reservas)
-          // }
         } catch (err) {
           console.error(err);
         }
@@ -62,7 +49,15 @@ function EstabProfile() {
 
 console.log(state)
 console.log(agendas)
-// console.log(reservas)
+
+//ATUALIZAR O FORMATO DA DATA DE STRING para DD/MM/AAAA
+function formatDate(date) {
+  const dateObj = new Date(date);
+
+  const dateString = dateObj.toLocaleDateString();
+
+  return dateString
+}
 
     return (
       <div>
@@ -94,12 +89,12 @@ console.log(agendas)
       <div className="form-group d-flex">
           <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
         </div>
+        <Rating style={{ color: "#FFA900" }} >{state.rank}</Rating>
         <hr style={{ backgroundColor: "#FFFFFF" }}/>
 
         <div className="form-group d-flex">
           <Link className="fas fa-edit fa-2x" style={{ color: "#FFFFFF" }} to="/profile_estab/edit" />
         </div>
-        <hr style={{ backgroundColor: "#FFFFFF" }}/>
         
         <div className="pt-4">
           <h3>Agendas</h3>
@@ -119,7 +114,7 @@ console.log(agendas)
                 <div key={agenda._id} className="rounded shadow w-100 my-4 p-3 ">
                   {/* <Link className="text-decoration-none" to={`/agenda/${agenda._id}`}> Ver detalhes </Link> */}
                   <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} to={`/agenda/${agenda._id}`} />
-                 <p> <strong> Data: </strong> {agenda.data}</p>
+                 <p> <strong> Data: </strong> {formatDate(agenda.data)} </p>
                  <p> <strong>Evento: </strong> {agenda.evento} </p>
                  <p> <strong> Status: </strong> {agenda.status} </p>
                  <p> <strong>Horario: </strong> {agenda.horario}</p>
