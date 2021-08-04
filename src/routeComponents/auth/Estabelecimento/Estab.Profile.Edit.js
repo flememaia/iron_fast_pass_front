@@ -107,8 +107,9 @@ const [errors, setError] = useState(null);
           <div className="form-group d-flex">
             <Link className="fas fa-angle-double-left pr-4" style={{ color: "#FFFFFF" }} to="/profile_estab" />
             <h1>Editar Perfil</h1>
+            </div>
+            <h3>{state.name}</h3>
             <div className="d-flex justify-content-around"> 
-              <h1>{state.name}</h1>
               <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
             </div>
           <hr style={{ backgroundColor: "#FFFFFF" }}/>
@@ -123,7 +124,6 @@ const [errors, setError] = useState(null);
       />
       </div>
       </div>
-    </div>
     </div>
     );
   }

@@ -60,12 +60,13 @@ function ClientProfile() {
           />
         </Link>
       </Navbar>
-
+      <div >
+            <Link className="fas fa-angle-double-left pr-4" style={{ color: "#FFFFFF" }} to="/">
+            <h7>Logoff</h7>
+            </Link>
+          </div>
         <div className="pag-fundo pt-4">
           <div className="container mt-5" style={{ color: "#FFA900" }}>
-          {/* <Link className="fas fa-angle-double-left pr-4" to="/">
-          <h7>Logoff</h7>
-          </Link> */}
             <div className="d-flex justify-content-around"> 
               <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
                 <h3 className="align-self-center">{state.name}</h3>

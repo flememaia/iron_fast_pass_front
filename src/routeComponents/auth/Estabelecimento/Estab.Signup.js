@@ -95,9 +95,7 @@ function EstabSignUp (props) {
                 style={{ color: "#FFFFFF" }}
                 to="/signupAll"
               />
-              <h1>
-                <strong>Cadastro Empresa!</strong>
-              </h1>
+              <h1><strong>Cadastro Empresa!</strong></h1>
             </div>
             <div style={{ fontSize: 17 }}>
               <strong>

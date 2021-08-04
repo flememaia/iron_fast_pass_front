@@ -28,7 +28,7 @@ return (
 
   <h3>Acompanhe o status da sua reserva no seu perfil</h3>
 
-  <p>Aproveite para verificar mais opções de rolê no apê!</p>
+  <p>Aproveite para verificar mais opções de rolê!</p>
   {/* <p>E a qualquer momento, avaliar a sua experiência com o nosso app! </p> */}
   </Modal.Body>
   <Modal.Footer>
