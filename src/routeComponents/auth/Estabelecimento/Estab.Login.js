@@ -44,55 +44,59 @@ function EstabLogin(props) {
 
   return (
     <div>
-    <Navbar
-      className="navbar sticky-top"
-      bg="white"
-      variant="white"
-      expand="lg"
-    >
-      <img
-        className="container d-flex"
-        src={SignupLogo}
-        style={{ height: "23%", width: "23%" }}
-        alt="logo"
+      <Navbar
+        className="navbar sticky-top"
+        bg="white"
+        variant="white"
+        expand="lg"
+      >
+        <img
+          className="container d-flex"
+          src={SignupLogo}
+          style={{ height: "23%", width: "23%" }}
+          alt="logo"
+        />
+      </Navbar>
+      <Link
+        className="fas fa-angle-double-left pr-4"
+        style={{ color: "#FFFFFF" }}
+        to="/"
       />
-    </Navbar>
-    <Link
+
+      <div className="pag-fundo pt-4">
+        <div className="container mt-5" style={{ color: "#FFA900" }}>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group d-flex pb-3">
+              <Link
                 className="fas fa-angle-double-left pr-4"
                 style={{ color: "#FFFFFF" }}
                 to="/"
               />
-
-    <div className="pag-fundo pt-4">
-        <div className="container mt-5" style={{ color: "#FFA900" }}>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group d-flex pb-3">
               <h1 className="pl-2">
                 <strong>Login Estabelecimento</strong>
               </h1>
-              </div>
-            <div style={{ fontSize: 16 }}>
+            </div>
+            <div style={{ fontSize: 17 }}>
               <strong>
-
-        <TextInput
-          label="E-mail:"
-          type="email"
-          name="email"
-          id="signupFormEmail"
-          value={state.email}
-          error={errors.email}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="Senha:"
-          type="password"
-          name="password"
-          id="signupFormPassword"
-          value={state.password}
-          error={errors.password}
-          onChange={handleChange}
-        />
-        </strong>
+                <TextInput
+                  label="E-mail:"
+                  type="email"
+                  name="email"
+                  id="signupFormEmail"
+                  value={state.email}
+                  error={errors.email}
+                  onChange={handleChange}
+                />
+                <TextInput
+                  label="Senha:"
+                  type="password"
+                  name="password"
+                  id="signupFormPassword"
+                  value={state.password}
+                  error={errors.password}
+                  onChange={handleChange}
+                />
+              </strong>
             </div>
             <div className="form-group">
               <div className=" d-flex justify-content-between">

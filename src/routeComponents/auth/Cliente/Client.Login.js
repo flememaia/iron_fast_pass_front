@@ -7,7 +7,6 @@ import { Navbar } from "react-bootstrap";
 import "../../../assets/styles/index.css";
 import SignupLogo from "../../../img/logosignup.png";
 
-
 function ClientLogin(props) {
   const authContext = useContext(AuthContext);
 
@@ -74,30 +73,28 @@ function ClientLogin(props) {
               </h1>
             </div>
 
-            <div style={{ fontSize: 16 }}>
+            <div style={{ fontSize: 17 }}>
               <strong>
-        <TextInput
-          label="E-mail:"
-          type="email"
-          name="email"
-          id="signupFormEmail"
-          value={state.email}
-          error={errors.email}
-          onChange={handleChange}
-        />
-        <TextInput
-          label="Senha:"
-          type="password"
-          name="password"
-          id="signupFormPassword"
-          value={state.password}
-          error={errors.password}
-          onChange={handleChange}
-        />
-        </strong>
+                <TextInput
+                  label="E-mail:"
+                  type="email"
+                  name="email"
+                  id="signupFormEmail"
+                  value={state.email}
+                  error={errors.email}
+                  onChange={handleChange}
+                />
+                <TextInput
+                  label="Senha:"
+                  type="password"
+                  name="password"
+                  id="signupFormPassword"
+                  value={state.password}
+                  error={errors.password}
+                  onChange={handleChange}
+                />
+              </strong>
             </div>
-
-
 
             <div className="form-group">
               <div className=" d-flex justify-content-between">

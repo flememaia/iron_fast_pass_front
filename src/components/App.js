@@ -8,7 +8,6 @@ import Home from "../routeComponents/Home";
 // import AuthRouter from "../routeComponents/auth/AuthRouter";
 import Signup from "../routeComponents/auth/Signup";
 
-
 import EstabSignUp from "../routeComponents/auth/Estabelecimento/Estab.Signup";
 import ClientSignUp from "../routeComponents/auth/Cliente/Client.Signup";
 import ClientLogin from "../routeComponents/auth/Cliente/Client.Login";
@@ -45,33 +44,72 @@ function App() {
           {/* 3.2.1 SignUp Estab */}
           <Route path="/signup_estab" component={EstabSignUp} />
           {/* Depois de fazer o cadastro, direciona para o login */}
-          <Route path="/login_estab" component={EstabLogin}/>    
+          <Route path="/login_estab" component={EstabLogin} />
           {/* Login com sucesso, direciona para o profile_estab*/}
-          <ProtectedRoute exact path="/profile_estab" component={EstabProfile} /> 
-              {/* Editar Profile*/}
-              <ProtectedRoute exact path="/profile_estab/edit" component={EstabProfileEditar} />
-              <ProtectedRoute exact path="/agenda/:id" component={AgendaDetails} />
-              <ProtectedRoute exact path="/agenda/:id/cancelar" component={AgendaCancelar} />
-              <ProtectedRoute exact path="/agenda/:id/criar" component={AgendaCriar} />
-              <ProtectedRoute exact path="/agenda/:id/editar" component={AgendaEditar} />
+          <ProtectedRoute
+            exact
+            path="/profile_estab"
+            component={EstabProfile}
+          />
+          {/* Editar Profile*/}
+          <ProtectedRoute
+            exact
+            path="/profile_estab/edit"
+            component={EstabProfileEditar}
+          />
+          <ProtectedRoute exact path="/agenda/:id" component={AgendaDetails} />
+          <ProtectedRoute
+            exact
+            path="/agenda/:id/cancelar"
+            component={AgendaCancelar}
+          />
+          <ProtectedRoute
+            exact
+            path="/agenda/:id/criar"
+            component={AgendaCriar}
+          />
+          <ProtectedRoute
+            exact
+            path="/agenda/:id/editar"
+            component={AgendaEditar}
+          />
 
-
-
-          <Route path="/signup" component={ClientSignUp}/>
-          <Route path="/login" component={ClientLogin}/>
+          <Route path="/signup" component={ClientSignUp} />
+          <Route path="/login" component={ClientLogin} />
           <ProtectedRoute exact path="/profile" component={ClientProfile} />
-          <ProtectedRoute exact path="/profile/edit" component={ClienteProfileEditar} />
+          <ProtectedRoute
+            exact
+            path="/profile/edit"
+            component={ClienteProfileEditar}
+          />
 
-              <ProtectedRoute exact path="/allestab" component={EstabList} />
-              <ProtectedRoute exact path="/allestab/:id" component={Estab} />
-              <ProtectedRoute exact path="/client_agenda/:id" component={ClienteAgendaDetails} />
-              <ProtectedRoute exact path="/agenda/:id/reserva" component={ReservaCriar} />
-              <ProtectedRoute exact path="/reserva-criada-sucesso" component={ReservaCriadaSucesso} />
-              <ProtectedRoute exact path="/reserva/:id" component={ReservaDetails} />
-              <ProtectedRoute exact path="/reserva/:id/cancelar" component={ReservaCancelar} />
-
-
-
+          <ProtectedRoute exact path="/allestab" component={EstabList} />
+          <ProtectedRoute exact path="/allestab/:id" component={Estab} />
+          <ProtectedRoute
+            exact
+            path="/client_agenda/:id"
+            component={ClienteAgendaDetails}
+          />
+          <ProtectedRoute
+            exact
+            path="/agenda/:id/reserva"
+            component={ReservaCriar}
+          />
+          <ProtectedRoute
+            exact
+            path="/reserva-criada-sucesso"
+            component={ReservaCriadaSucesso}
+          />
+          <ProtectedRoute
+            exact
+            path="/reserva/:id"
+            component={ReservaDetails}
+          />
+          <ProtectedRoute
+            exact
+            path="/reserva/:id/cancelar"
+            component={ReservaCancelar}
+          />
 
           {/* to={`/agenda/${agendas._id}/editar`} */}
         </Switch>

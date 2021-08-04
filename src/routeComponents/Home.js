@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../assets/styles/index.css";
 import LogoHome from "../img/logohome.png";
 
-function SignUp() {
+function Home() {
   return (
     <div className="pag-fundo pt-4">
       <div
@@ -13,7 +13,7 @@ function SignUp() {
         <h3 className="mt-3 mb-5">
           <img
             src={LogoHome}
-            style={{ height: "62%", width: "62%"}}
+            style={{ height: "62%", width: "62%" }}
             alt="logo"
           />
         </h3>
@@ -23,10 +23,9 @@ function SignUp() {
             style={{ backgroundColor: "#FF7600" }}
             to="/login"
           >
-
             Cliente
           </Link>
-          <br/>
+          <br />
           <Link
             className="btn btn-lg btn-primary pl-2 pr-2 pt-3 pb-3 mt-2 mb-4"
             style={{ backgroundColor: "#FF7600" }}
@@ -38,7 +37,7 @@ function SignUp() {
           <p style={{ color: "#FFA900" }}>
             Ainda não está <br />
             cadastrado? <br />
-            <Link className="text-white" to="/signupAll">
+            <Link className="text-white" to="/SignupAll">
               Registre-se
             </Link>
           </p>
@@ -48,4 +47,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Home;
