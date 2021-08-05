@@ -57,11 +57,6 @@ function EstabLogin(props) {
           alt="logo"
         />
       </Navbar>
-      <Link
-        className="fas fa-angle-double-left pr-4"
-        style={{ color: "#FFFFFF" }}
-        to="/"
-      />
 
       <div className="pag-fundo pt-4">
         <div className="container mt-5" style={{ color: "#FFA900" }}>
