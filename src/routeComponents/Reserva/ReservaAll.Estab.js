@@ -2,10 +2,15 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import LogoFixa from "../../img/logo.png";
 import { Navbar } from "react-bootstrap";
+import { NavBarLogado } from "../../components/NavBar";
 
 import api from "../../apis/api";
 
 function ReservaAllEstab() {
+  const logoff = {
+    isActive: true
+  }
+
   const [reservas, setReservas] = useState({
     horario: "",
     quantidadeDePessoas: 0,
@@ -35,7 +40,7 @@ console.log(reservas)
 
   return (
     <div>
-    <Navbar
+    {/* <Navbar
       className="navbar sticky-top"
       bg="white"
       variant="white"
@@ -49,7 +54,9 @@ console.log(reservas)
           alt="logo"
         /> 
       </Link>
-    </Navbar>   
+    </Navbar>    */}
+
+  <NavBarLogado src={LogoFixa} height="40px" state={logoff}/>
 
    <div className="pag-fundo pt-4">
         <div className="container mt-5" style={{ color: "#FFA900" }}>
@@ -62,14 +69,15 @@ console.log(reservas)
           </div>
           <h1 className="mb-5">
             <strong>Reservas</strong></h1>
-            <h2 className="mb-5">Ativas</h2>
-            <h3 className="mb-5">Aguardando Aprovação</h3>
+            <h2 className="mb-2">Ativas</h2>
+            <h3 className="mb-2" style={{ fontSize: "25px" }}>Aguardando Aprovação</h3>
             {reservas.length ? (
             reservas.filter(reserva => reserva.status === "Aguardando Aprovação")
             .map((reserva) => {
                 return ( 
                 <div key={reserva._id} className="rounded shadow w-100 my-4 p-3 ">
-                  <Link className="fas fa-eye" to={`/reserva_estab/${reserva._id}`} />
+                  <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} 
+                  to={`/reserva_estab/${reserva._id}`} />             
                   <p> <strong>Horario: </strong> {reserva.horario}</p>
                  <p> <strong>Quantidade de Pessoas: </strong> {reserva.quantidadeDePessoas} </p>                 
                  <p> <strong> Status: </strong> {reserva.status} </p>
@@ -77,13 +85,14 @@ console.log(reservas)
             }) 
           ) : (null)}  
 
-            <h3 className="mb-5">Aprovada</h3>
+            <h3 className="mb-2" style={{ fontSize: "25px" }}>Aprovada</h3>
             {reservas.length ? (
             reservas.filter(reserva => reserva.status === "Aprovada")
             .map((reserva) => {
                 return ( 
                 <div key={reserva._id} className="rounded shadow w-100 my-4 p-3 ">
-                  <Link className="fas fa-eye" to={`/reserva_estab/${reserva._id}`} />
+                  <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} 
+                  to={`/reserva_estab/${reserva._id}`} />  
                   <p> <strong>Horario: </strong> {reserva.horario}</p>
                  <p> <strong>Quantidade de Pessoas: </strong> {reserva.quantidadeDePessoas} </p>                 
                  <p> <strong> Status: </strong> {reserva.status} </p>
@@ -91,14 +100,14 @@ console.log(reservas)
             }) 
           ) : (null)}
 
-          <h1 className="mb-5">
-            <strong>Histórico</strong></h1>
+          <h2 className="mb-2">Histórico</h2>
           {reservas.length ? (
             reservas.filter(reserva => reserva.status !== "Aprovada" || reserva.status !== "Aguardando Aprovação")
             .map((reserva) => {
                 return ( 
                 <div key={reserva._id} className="rounded shadow w-100 my-4 p-3 ">
-                  {/* <Link className="fas fa-eye" to={`/reserva/${reserva._id}`} /> */}
+                  <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} 
+                  to={`/reserva_estab/${reserva._id}`} />  
                   <p> <strong>Horario: </strong> {reserva.horario}</p>
                  <p> <strong>Quantidade de Pessoas: </strong> {reserva.quantidadeDePessoas} </p>                 
                  <p> <strong> Status: </strong> {reserva.status} </p>

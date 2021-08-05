@@ -4,8 +4,13 @@ import api from "../../../apis/api";
 import TextInput from "../../../components/TextInput";
 import SignupLogo from "../../../img/logosignup.png";
 import { Navbar } from "react-bootstrap";
+import { NavBarMenu } from "../../../components/NavBar";
 
 function EstabSignUp (props) {
+  const logoff = {
+    isActive: false
+  }
+
   const [state, setState] = useState({ 
     name: "", 
     password: "", 
@@ -72,7 +77,7 @@ function EstabSignUp (props) {
 
   return (
     <div>
-    <Navbar
+    {/* <Navbar
       className="navbar sticky-top"
       bg="white"
       variant="white"
@@ -84,7 +89,9 @@ function EstabSignUp (props) {
         style={{ height: "23%", width: "23%" }}
         alt="logo"
       />
-    </Navbar>
+    </Navbar> */}
+
+    <NavBarMenu src={SignupLogo} height="40px" state={logoff}/>
 
     <div className="pag-fundo pt-4">
         <div className="container mt-5" style={{ color: "#FFA900" }}>
@@ -95,7 +102,7 @@ function EstabSignUp (props) {
                 style={{ color: "#FFFFFF" }}
                 to="/signupAll"
               />
-              <h1><strong>Cadastro Empresa!</strong></h1>
+              <h1><strong>Cadastro Estabelecimento</strong></h1>
             </div>
             <div style={{ fontSize: 17 }}>
               <strong>

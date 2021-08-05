@@ -4,14 +4,20 @@ import api from "../../../apis/api";
 import { Navbar } from "react-bootstrap";
 import LogoFixa from "../../../img/logo.png";
 import Rating from "../../../components/Rating";
+// import Carousel from "../../../components/Carousel";
+import { NavBarLogado } from "../../../components/NavBar";
 
 function EstabProfile() {
+
+  const logoff = {
+    isActive: true
+  }
 
     //dados do estabelecimento - EstabModel
     const [state, setState] = useState({
       name: "", 
       email: "",
-      fotoUrl: ""
+      fotoUrl: []
     });
     
     //dados da agenda - AgendaModel
@@ -59,9 +65,10 @@ function formatDate(date) {
   return dateString
 }
 
+console.log(state.fotoUrl)
     return (
       <div>
-      <Navbar
+      {/* <Navbar
       className="navbar sticky-top"
       bg="white"
       variant="white"
@@ -76,46 +83,61 @@ function formatDate(date) {
           to="/"
         />
       </Link>
-    </Navbar>
-    <div >
-            <Link className="fas fa-sign-out-alt pr-4" style={{ color: "#56005C" }} to="/">
-            <h7>Logoff</h7>
-            </Link>
-          </div>
+    </Navbar> */}
 
+    <NavBarLogado src={LogoFixa} height="40px" state={logoff}/>
     <div className="pag-fundo pt-4">
+    
       <div className="container mt-5" style={{ color: "#FFA900" }}>
         <h1>{state.name}</h1>
-      <div className="form-group d-flex">
-          <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
-        </div>
         <Rating style={{ color: "#FFA900" }} >{state.rank}</Rating>
-        <hr style={{ backgroundColor: "#FFFFFF" }}/>
-
-        <div className="form-group d-flex">
-          <Link className="fas fa-edit fa-2x" style={{ color: "#FFFFFF" }} to="/profile_estab/edit" />
+        {/* FOTO */}
+      <div className="form-group d-flex">
+          <img className="img-fluid" src={state.fotoUrl[0]} alt=""/>
         </div>
+
+        
+
+        <div className="d-flex justify-content-end">
+            <Link className="btn text-white" style={{ backgroundColor: "#FF7600"}} to="/profile_estab/edit"> 
+              Editar Perfil
+            </Link>
+          </div>
+        <hr style={{ backgroundColor: "#FFFFFF" }}/>
         
         <div className="pt-4">
-          <h3>Agendas</h3>
-          <br/>
-          <div className="form-group d-flex">
-            <Link className="fas fa-calendar-plus fa-2x" style={{ color: "#FFFFFF" }} 
+          <div className="form-group d-flex justify-content-between m-3">
+            <h2>Agendas</h2>
+            <Link className="fas fa-calendar-plus fa-2x" style={{ color: "#FFA900" }} 
             to={`/agenda/${state._id}/criar`} />
           </div>
 
-
-
-          {/* agendas => é o state das agendas => linha 24 */}
-          {/* DÚVIDA RENDERIZAR SEPARADO SOMENTE AS ATIVAS E AS NÃO ATIVAS COMO HISTÓRICO */}
           {agendas.length ? (
-            agendas.map((agenda) => {
+            agendas.filter(agenda => agenda.status === "Ativa")
+              .map((agenda) => {
                 return ( 
                 <div key={agenda._id} className="rounded shadow w-100 my-4 p-3 ">
                   {/* <Link className="text-decoration-none" to={`/agenda/${agenda._id}`}> Ver detalhes </Link> */}
                   <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} to={`/agenda/${agenda._id}`} />
                  <p> <strong> Data: </strong> {formatDate(agenda.data)} </p>
                  <p> <strong>Evento: </strong> {agenda.evento} </p>
+                 <p> <strong>Atracao: </strong> {agenda.atracao} </p>
+                 <p> <strong> Status: </strong> {agenda.status} </p>
+                 <p> <strong>Horario: </strong> {agenda.horario}</p>
+                </div>); 
+            }) 
+          ) : (null)}
+
+          <h3>Histórico</h3>
+          {agendas.length ? (
+            agendas.filter(agenda => agenda.status !== "Ativa")
+              .map((agenda) => {
+                return ( 
+                <div key={agenda._id} className="rounded shadow w-100 my-4 p-3 ">
+                <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} to={`/agenda/${agenda._id}`} />
+                 <p> <strong> Data: </strong> {formatDate(agenda.data)} </p>
+                 <p> <strong>Evento: </strong> {agenda.evento} </p>
+                 <p> <strong>Atracao: </strong> {agenda.atracao} </p>
                  <p> <strong> Status: </strong> {agenda.status} </p>
                  <p> <strong>Horario: </strong> {agenda.horario}</p>
                 </div>); 
@@ -127,21 +149,14 @@ function formatDate(date) {
 
         <div className="py-4">
           <h3>RESERVAS</h3>
-          <Link to="/reserva_estab">RESERVAS</Link>
+          {/* <Link to="/reserva_estab">RESERVAS</Link> */}
 
-          {/* DÚVIDA RENDERIZAR SEPARADO SOMENTE AS ATIVAS E AS NÃO ATIVAS COMO HISTÓRICO */}
-          {/* {reservas.length ? (
-            reservas.map((reserva) => {
-                return ( 
-                <div key={reserva._id} className="rounded shadow w-100 my-4 p-3 "> */}
-                  {/* <Link className="fas fa-eye" to={`/reserva/${reserva._id}`} /> */}
-                 {/* <p> <strong> Data: </strong> {reserva.data}</p>
-                 <p> <strong>Evento: </strong> {reserva.evento} </p>
-                 <p> <strong> Status: </strong> {reserva.status} </p>
-                 <p> <strong>Horario: </strong> {reserva.horario}</p> */}
-                {/* </div>); 
-            }) 
-          ) : (null)} */}
+          <div className="d-flex justify-content-start">
+            <Link className="btn text-white" style={{ backgroundColor: "#FF7600"}} to="/reserva_estab"> 
+              Reservas
+            </Link>
+          </div>
+        
         
         </div>
       </div> 

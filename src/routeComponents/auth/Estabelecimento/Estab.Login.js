@@ -5,8 +5,13 @@ import TextInput from "../../../components/TextInput";
 import { AuthContext } from "../../../contexts/authContext";
 import SignupLogo from "../../../img/logosignup.png";
 import { Navbar } from "react-bootstrap";
+import { NavBarMenu } from "../../../components/NavBar";
 
 function EstabLogin(props) {
+  const logoff = {
+    isActive: false
+  }
+
   const authContext = useContext(AuthContext);
 
   const [state, setState] = useState({ password: "", email: "" });
@@ -44,7 +49,7 @@ function EstabLogin(props) {
 
   return (
     <div>
-    <Navbar
+    {/* <Navbar
       className="navbar sticky-top"
       bg="white"
       variant="white"
@@ -56,7 +61,8 @@ function EstabLogin(props) {
         style={{ height: "23%", width: "23%" }}
         alt="logo"
       />
-    </Navbar>
+    </Navbar> */}
+    <NavBarMenu src={SignupLogo} height="40px" state={logoff}/>
     <Link
                 className="fas fa-angle-double-left pr-4"
                 style={{ color: "#FFFFFF" }}
@@ -67,6 +73,11 @@ function EstabLogin(props) {
         <div className="container mt-5" style={{ color: "#FFA900" }}>
           <form onSubmit={handleSubmit}>
             <div className="form-group d-flex pb-3">
+            <Link
+                className="fas fa-angle-double-left pr-2"
+                style={{ color: "#FFFFFF" }}
+                to="/"
+              />
               <h1 className="pl-2">
                 <strong>Login Estabelecimento</strong>
               </h1>
@@ -106,7 +117,7 @@ function EstabLogin(props) {
               </div>
               <br />
               <p style={{ color: "#FFA900" }}>
-                Ainda não tenho uma conta? <br />
+                Ainda não tem uma conta? <br />
                 <Link className="text-white" to="/signup_estab">
                   Clique Aqui!
                 </Link>

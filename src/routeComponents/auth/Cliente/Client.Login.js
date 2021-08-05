@@ -6,9 +6,14 @@ import { AuthContext } from "../../../contexts/authContext";
 import { Navbar } from "react-bootstrap";
 import "../../../assets/styles/index.css";
 import SignupLogo from "../../../img/logosignup.png";
-
+import { NavBarMenu } from "../../../components/NavBar";
 
 function ClientLogin(props) {
+
+  const logoff = {
+    isActive: false
+  }
+
   const authContext = useContext(AuthContext);
 
   const [state, setState] = useState({ password: "", email: "" });
@@ -46,7 +51,7 @@ function ClientLogin(props) {
 
   return (
     <div>
-      <Navbar
+      {/* <Navbar
         className="navbar sticky-top"
         bg="white"
         variant="white"
@@ -58,7 +63,9 @@ function ClientLogin(props) {
           style={{ height: "23%", width: "23%" }}
           alt="logo"
         />
-      </Navbar>
+      </Navbar> */}
+
+    <NavBarMenu src={SignupLogo} height="40px" state={logoff}/>
 
       <div className="pag-fundo pt-4">
         <div className="container mt-5" style={{ color: "#FFA900" }}>
@@ -70,7 +77,7 @@ function ClientLogin(props) {
                 to="/"
               />
               <h1 className="pl-2">
-                <strong>Login Usuário</strong>
+                <strong>Login Cliente</strong>
               </h1>
             </div>
 
@@ -112,7 +119,7 @@ function ClientLogin(props) {
 
               <br />
               <p style={{ color: "#FFA900" }}>
-                Ainda não tenho uma conta? <br />
+                  Ainda não tem uma conta? <br />
                 <Link className="text-white" to="/signup">
                   Clique Aqui!
                 </Link>

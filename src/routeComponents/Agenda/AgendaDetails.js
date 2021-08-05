@@ -35,6 +35,15 @@ function AgendaDetails() {
 console.log(agendas)
 console.log(reservas)
 
+//ATUALIZAR O FORMATO DA DATA DE STRING para DD/MM/AAAA
+function formatDate(date) {
+  const dateObj = new Date(date);
+
+  const dateString = dateObj.toLocaleDateString();
+
+  return dateString
+}
+
   return (
     <div>
       <Navbar
@@ -66,7 +75,7 @@ console.log(reservas)
         </p>
         <p>
           <strong> Data: </strong>
-          <p style={{ color: "#FFFFFF" }}>{agendas.data}</p>
+          <p style={{ color: "#FFFFFF" }}>{formatDate(agendas.data)} </p>
         </p>
         <p>
         <strong>Horario: </strong>

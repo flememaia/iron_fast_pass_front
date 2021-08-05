@@ -2,10 +2,17 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Navbar } from "react-bootstrap";
 import LogoFixa from "../../../img/logo.png"
+import { NavBarLogado } from "../../../components/NavBar";
+import Rating from "../../../components/Rating";
 
 import api from "../../../apis/api";
 
 function EstabList() {
+
+const logoff = {
+  isActive: true
+}
+
   const [state, setState] = useState({
     name: "",
     fotoUrl: "",
@@ -41,7 +48,7 @@ function EstabList() {
 
   return (
     <div>
-      <Navbar
+      {/* <Navbar
         className="navbar sticky-top"
         bg="white"
         variant="white"
@@ -55,23 +62,20 @@ function EstabList() {
             alt="logo"
           />
         </Link>
-      </Navbar>
+      </Navbar> */}
+
+<NavBarLogado src={LogoFixa} height="40px" state={logoff}/>
 
       <div className="pag-fundo pt-4">
-        <div className="container mt-5" style={{ color: "#FFA900" }}>
-          <div className="form-group d-flex">
-            <Link
-              className="fas fa-angle-double-left pr-4"
-              style={{ color: "#FFFFFF" }}
-              to="/profile"
-            />
-          </div>
-
-
-          <div className="d-flex justify-content-around">
-            <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`} />
-            <h3 className="align-self-center">{state.name}</h3>
-          </div>
+        <div className="container mt-2" style={{ color: "#FFA900" }}>
+          <div className="d-flex justify-content-around"> 
+              <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
+                <div className="mt-4">
+                    <h3 className="align-self-start">{state.name}</h3>
+                    <Rating style={{ color: "#FFA900"}} >{state.rank}</Rating>
+                </div>
+                
+            </div>
 
           <hr style={{ backgroundColor: "#FFFFFF" }} />
 
@@ -90,19 +94,18 @@ function EstabList() {
 
                     <Link className="text-decoration-none"
                       to={`/allestab/${estab._id}`}
-                    // to="/allestab/6102ca9d07a2462ca806357d"
                     >
                       Ver detalhes
                     </Link>
                     <p>
-                      <strong>{estab.name}</strong>
+                      <h3><strong>{estab.name}</strong></h3>
+                      <Rating style={{ color: "#FFA900"}} >{estab.rank}</Rating>
                     </p>
 
                     <img className="img-fluid" src={estab.fotoUrl[0]} alt={`${estab.name} foto`} />
 
-                    <p>
-                      {estab.rank}
-                    </p>
+                      
+                    
                     <p>
                       <strong>Horario de Funcionamento: </strong>
                       {estab.horarioDeFuncionamento}

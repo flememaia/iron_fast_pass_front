@@ -4,8 +4,15 @@ import api from "../../../apis/api";
 import TextInput from "../../../components/TextInput";
 import SignupLogo from "../../../img/logosignup.png";
 import { Navbar } from "react-bootstrap";
+import { NavBarMenu } from "../../../components/NavBar";
 
 function ClientSignUp(props) {
+
+  const logoff = {
+    isActive: false
+  }
+
+
   const [state, setState] = useState({ 
     name: "", 
     password: "", 
@@ -60,7 +67,7 @@ async function handleFileUpload(file) {
 
   return (
   <div>
-    <Navbar
+    {/* <Navbar
       className="navbar sticky-top"
       bg="white"
       variant="white"
@@ -72,7 +79,9 @@ async function handleFileUpload(file) {
         style={{ height: "23%", width: "23%" }}
         alt="logo"
       />
-    </Navbar>
+    </Navbar> */}
+
+    <NavBarMenu src={SignupLogo} height="40px" state={logoff}/>
 
       <div className="pag-fundo pt-4">
         <div className="container mt-5" style={{ color: "#FFA900" }}>
@@ -81,7 +90,7 @@ async function handleFileUpload(file) {
           <Link 
           className="fas fa-angle-double-left pr-4"
           style={{ color: "#FFFFFF" }} to="/signupAll" />
-          <h1><strong>Cadastro Usuário!</strong></h1>
+          <h1><strong>Cadastro Cliente</strong></h1>
         </div>
         <div style={{ fontSize: 17 }}>
           <strong>

@@ -3,8 +3,14 @@ import { useState, useEffect } from "react";
 import { Navbar } from "react-bootstrap";
 import LogoFixa from "../../../img/logo.png"
 import api from "../../../apis/api";
+import { NavBarLogado } from "../../../components/NavBar";
+import Rating from "../../../components/Rating";
 
 function Estab() {
+  const logoff = {
+    isActive: true
+  }
+
   const [state, setState] = useState({
     name: "", 
     // fotoUrl: "",
@@ -49,9 +55,18 @@ function Estab() {
 
 console.log(estab)
 
+//ATUALIZAR O FORMATO DA DATA DE STRING para DD/MM/AAAA
+function formatDate(date) {
+  const dateObj = new Date(date);
+
+  const dateString = dateObj.toLocaleDateString();
+
+  return dateString
+}
+
   return (
     <div>
-    <Navbar
+    {/* <Navbar
       className="navbar sticky-top"
       bg="white"
       variant="white"
@@ -65,9 +80,11 @@ console.log(estab)
           alt="logo"
         />
       </Link>
-    </Navbar>
+    </Navbar> */}
+    <NavBarLogado src={LogoFixa} height="40px" state={logoff}/>
+
     <div className="pag-fundo pt-4">
-       <div className="container mt-5" style={{ color: "#FFA900" }}>
+       <div className="container mt-2" style={{ color: "#FFA900" }}>
           <div className="form-group d-flex">
             <Link
               className="fas fa-angle-double-left pr-4"
@@ -78,35 +95,45 @@ console.log(estab)
 
         <div className="d-flex justify-content-around"> 
           <img className="img-fluid rounded-circle" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
-          <h3 className="align-self-center">{state.name}</h3>
+          <div className="mt-4">
+            <h3 className="align-self-start">{state.name}</h3>
+            <Rating style={{ color: "#FFA900"}} >{state.rank}</Rating>
+          </div>
         </div>
         <hr style={{ backgroundColor: "#FFFFFF" }} />
 
   <div className="p-4">
-    <h3>Estabelecimento</h3>
-        <div className="rounded shadow w-100 my-4 p-3" style={{backgroundColor: "#FFA900", color: "#56005C"}}>
-          <h1>{estab.name}</h1>
+    <h2>Estabelecimento</h2>
+        <div className="rounded shadow w-100 my-4 p-3" style={{backgroundColor: "#FFFFFF", color: "#56005C"}}>
+        <p>
+          <h3><strong>{estab.name}</strong></h3>
+          <Rating style={{ color: "#FFA900"}} >{estab.rank}</Rating>
+        </p>
               {/* <img className="img-fluid m-3" src={estab.fotoUrl[0]} alt="Sua foto de perfil"/> */}
               <p><strong>{estab.email}</strong></p>
                 <p>{`${estab.rua}, ${estab.numero}, ${estab.bairro} - ${estab.cidade} - ${estab.estado} - ${estab.cep}`}</p>
                 <Link to={estab.localizacaoUrl} >
                   {/* <iframe>{estab.localizacaoUrl}</iframe> */}
                 </Link>
-                <p>{estab.rank}</p>
                 <p>{estab.horarioDeFuncionamento}</p>
                 <p>{estab.telefone}</p> 
                 <Link to={estab.redeSocialUrl} />  
           </div>                
         </div>
 
+      {/* Renderiza apenas as agendas ATIVAS */}
+        <h3>Agendas</h3>
         {agendas.length ? (
-            agendas.map((agenda) => {
+            agendas.filter(agenda => agenda.status === "Ativa")
+              .map((agenda) => {
                 return ( 
                 <div key={agenda._id} className="rounded shadow w-100 my-4 p-3 ">
-                <Link className="fas fa-eye" style={{ color: "#FFFFFF" }} to={`/client_agenda/${agenda._id}`} />
-                 <p> <strong> Data: </strong> {agenda.data}</p>
+                  {/* <Link className="text-decoration-none" to={`/agenda/${agenda._id}`}> Ver detalhes </Link> */}
+                  <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} to={`/client_agenda/${agenda._id}`} />
+                 <p> <strong> Data: </strong> {formatDate(agenda.data)} </p>
                  <p> <strong>Evento: </strong> {agenda.evento} </p>
-                 <p> <strong> Status: </strong> {agenda.status} </p>
+                 <p> <strong>Atracao: </strong> {agenda.atracao} </p>
+                 {/* <p> <strong> Status: </strong> {agenda.status} </p> */}
                  <p> <strong>Horario: </strong> {agenda.horario}</p>
                 </div>); 
             }) 

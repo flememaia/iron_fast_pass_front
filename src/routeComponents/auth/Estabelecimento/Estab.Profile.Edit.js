@@ -4,9 +4,13 @@ import api from "../../../apis/api";
 import EstabProfileForm from "./Estab.ProfileForm";
 import { Navbar } from "react-bootstrap";
 import LogoFixa from "../../../img/logo.png";
+import { NavBarLogado } from "../../../components/NavBar";
 
 function EstabProfileEditar(props) {
-
+  
+  const logoff = {
+    isActive: true
+  }
     //dados do estabelecimento - EstabModel
     const [state, setState] = useState({
       name: "", 
@@ -86,7 +90,7 @@ const [errors, setError] = useState(null);
 }
     return (
       <div>
-      <Navbar
+      {/* <Navbar
         className="navbar sticky-top"
         bg="white"
         variant="white"
@@ -100,8 +104,9 @@ const [errors, setError] = useState(null);
             alt="logo"
           />
         </Link>
-      </Navbar>
+      </Navbar> */}
 
+      <NavBarLogado src={LogoFixa} height="40px" state={logoff}/>
       <div className="pag-fundo pt-4">
         <div className="container mt-5" style={{ color: "#FFA900" }}>
           <div className="form-group d-flex">
@@ -110,7 +115,7 @@ const [errors, setError] = useState(null);
             </div>
             <h3>{state.name}</h3>
             <div className="d-flex justify-content-around"> 
-              <img className="img-fluid" src={state.fotoUrl} alt={`${state.fotoUrl} foto`}/>
+              <img className="img-fluid" src={state.fotoUrl[0]} alt={`${state.fotoUrl[0]} foto`}/>
             </div>
           <hr style={{ backgroundColor: "#FFFFFF" }}/>
 

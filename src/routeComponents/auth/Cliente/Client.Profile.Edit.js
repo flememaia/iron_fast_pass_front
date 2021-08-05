@@ -4,8 +4,12 @@ import ClientProfileForm from "./Client.ProfileForm";
 import api from "../../../apis/api";
 import { Navbar } from "react-bootstrap";
 import LogoFixa from "../../../img/logo.png";
+import { NavBarLogado } from "../../../components/NavBar";
 
 function ClienteProfileEditar(props){
+  const logoff = {
+    isActive: true
+  }
 
   const [state, setState] = useState({
   name: "", 
@@ -85,7 +89,7 @@ async function handleFileUpload(file) {
   
   return (
   <div>
-      <Navbar
+      {/* <Navbar
         className="navbar sticky-top"
         bg="white"
         variant="white"
@@ -99,11 +103,12 @@ async function handleFileUpload(file) {
             alt="logo"
           />
         </Link>
-      </Navbar>
+      </Navbar> */}
 
+  <NavBarLogado src={LogoFixa} height="40px" state={logoff}/>
       
       <div className="pag-fundo pt-4">
-        <div className="container mt-5" style={{ color: "#FFA900" }}>
+        <div className="container mt-2" style={{ color: "#FFA900" }}>
           <div className="form-group d-flex">
             <Link className="fas fa-angle-double-left pr-4" style={{ color: "#FFFFFF" }} to="/profile" />
             <h1>Editar Perfil</h1>

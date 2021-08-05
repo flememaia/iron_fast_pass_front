@@ -3,10 +3,17 @@ import { useParams, Link } from "react-router-dom";
 import ReservaForm from "./ReservaForm";
 import LogoFixa from "../../img/logo.png";
 import { Navbar } from "react-bootstrap";
+import { NavBarLogado } from "../../components/NavBar";
+
 
 import api from "../../apis/api";
 
 function ReservaCriar(props) {
+
+  const logoff = {
+    isActive: true
+  }
+
   const [reserva, setReserva] = useState({
     horario: "",
     quantidadeDePessoas: 0,
@@ -44,7 +51,7 @@ console.log(reserva)
 
 return (
   <div>
-      <Navbar
+      {/* <Navbar
         className="navbar sticky-top"
         bg="white"
         variant="white"
@@ -58,7 +65,9 @@ return (
             alt="logo"
           />
         </Link>
-      </Navbar>
+      </Navbar> */}
+
+<NavBarLogado src={LogoFixa} height="40px" state={logoff}/>
 
       <div className="pag-fundo pt-4">
         <div className="container mt-5" style={{ color: "#FFA900" }}>

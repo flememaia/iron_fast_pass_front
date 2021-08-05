@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SignupLogo from "../../img/logosignup.png";
-import { Navbar } from "react-bootstrap";
+// import { Navbar } from "react-bootstrap";
+import {NavBarMenu} from "../../components/NavBar";
 
-function Home() {
+function Signup() {
+
+  const state = {
+    isActive: false
+  }
+
   return (
     <div>
-    <Navbar
+      <NavBarMenu src={SignupLogo} height="40px" state={state}/>
+    {/* <Navbar
       className="navbar sticky-top"
       bg="white"
       variant="white"
@@ -15,10 +22,10 @@ function Home() {
       <img
         className="container d-flex"
         src={SignupLogo}
-        style={{ height: "23%", width: "23%" }}
+        style={{ height: "40px", width: "auto" }}
         alt="logo"
       />
-    </Navbar>
+    </Navbar> */}
     
     <div className="pag-fundo pd-4">
         <div className="container mt-5 " style={{ color: "#FFA900" }}>
@@ -53,7 +60,7 @@ function Home() {
                 style={{ backgroundColor: "#FF7600" }}
                 to="/signup_estab"
               >
-                Estabelecimentos <br />
+                Estabelecimento <br />
               </Link>
             </div>
           </div>
@@ -63,4 +70,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Signup;

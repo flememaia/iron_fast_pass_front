@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../assets/styles/index.css";
 import LogoHome from "../img/logohome.png";
 
-function SignUp() {
+function Home() {
   return (
     <div className="pag-fundo pt-4">
       <div
@@ -13,7 +13,7 @@ function SignUp() {
         <h3 className="mt-3 mb-5">
           <img
             src={LogoHome}
-            style={{ height: "62%", width: "62%"}}
+            style={{ height: "70px", width: "auto"}}
             alt="logo"
           />
         </h3>
@@ -48,4 +48,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Home;

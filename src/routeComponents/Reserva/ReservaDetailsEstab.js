@@ -2,10 +2,16 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import LogoFixa from "../../img/logo.png";
 import { Navbar } from "react-bootstrap";
+import { NavBarLogado } from "../../components/NavBar";
 
 import api from "../../apis/api";
 
 function ReservaDetailsEstab() {
+
+const logoff = {
+  isActive: true
+}
+
   const [reservas, setReservas] = useState({
     horario: "",
     quantidadeDePessoas: 0,
@@ -37,7 +43,7 @@ console.log(reservas)
 
   return (
     <div>
-    <Navbar
+    {/* <Navbar
       className="navbar sticky-top"
       bg="white"
       variant="white"
@@ -51,8 +57,10 @@ console.log(reservas)
           alt="logo"
         /> 
       </Link>
-    </Navbar>   
+    </Navbar>    */}
 
+  <NavBarLogado src={LogoFixa} height="40px" state={logoff}/>
+  
    <div className="pag-fundo pt-4">
         <div className="container mt-5" style={{ color: "#FFA900" }}>
           <div className="form-group d-flex">

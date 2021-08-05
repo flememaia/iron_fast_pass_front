@@ -5,7 +5,6 @@ import { AuthContextComponent } from "../contexts/authContext";
 
 //COMPONENTES
 import Home from "../routeComponents/Home";
-// import AuthRouter from "../routeComponents/auth/AuthRouter";
 import Signup from "../routeComponents/auth/Signup";
 
 
@@ -22,8 +21,6 @@ import AgendaDetails from "../routeComponents/Agenda/AgendaDetails";
 import AgendaCancelar from "../routeComponents/Agenda/AgendaCancelar_Edit";
 import AgendaCriar from "../routeComponents/Agenda/AgendaCriar";
 import AgendaEditar from "../routeComponents/Agenda/AgendaEditar";
-// import AllEstab from "../routeComponents/Geral/Geral.AllEstab";
-import EstabDetails from "../routeComponents/Geral/Geral.EstabDetails";
 import EstabList from "../routeComponents/auth/Cliente/Client.AllEstab";
 import Estab from "../routeComponents/auth/Cliente/Client.Estab";
 import ClienteAgendaDetails from "../routeComponents/auth/Cliente/Cliente.AgendaDetails";
