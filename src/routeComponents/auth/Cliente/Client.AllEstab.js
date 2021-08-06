@@ -92,11 +92,13 @@ const logoff = {
                     className="rounded shadow w-100 my-4 p-3"
                   >
 
-                    <Link className="text-decoration-none"
+                    {/* <Link className="text-decoration-none"
                       to={`/allestab/${estab._id}`}
                     >
                       Ver detalhes
-                    </Link>
+                    </Link> */}
+                    <Link className="fas fa-eye d-flex justify-content-end" style={{ color: "#FFFFFF" }} 
+                  to={`/allestab/${estab._id}`} /> 
                     <p>
                       <h3><strong>{estab.name}</strong></h3>
                       <Rating style={{ color: "#FFA900"}} >{estab.rank}</Rating>

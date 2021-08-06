@@ -76,7 +76,6 @@ return (
       <Modal.Title>Atualizar Status Reserva</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-      xxxxxxxxxxxxxxxxxxxxxxxx
     </Modal.Body>
     <Modal.Footer>
       <ReservaFormStatus
